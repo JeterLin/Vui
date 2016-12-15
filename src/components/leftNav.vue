@@ -17,7 +17,7 @@
 		float:left;
 		width:30%;
 		background-color:#ffc;
-
+		
 		height:100%;
 	}
 </style>

@@ -30,6 +30,15 @@ export default {
   @import "./style/normalize";
   @import "./style/common";
   @import './style/mixin';
+  body{
+      font-family:$font-family-sans-serif;
+      font-size:$font-size-base;
+      line-height:$line-height-base;
+      color:$color-font;
+  }
+  html,body{
+      min-height:100%;
+   }
   #ui-demo{
     @include clearfix;
     width:100%;

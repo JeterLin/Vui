@@ -1,10 +1,43 @@
+//fonts
 $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
+
 $font-size-base:          14px !default;
-body{
-	font-family:$font-family-sans-serif;
-	font-size:$font-size-base;
-}
-html,body{
-	min-height:100%;
-}
+$line-height-base:        22px !default;
+
+$font-size-normal:		  16px !default;
+$line-height-normal: 	  26px !default;
+
+$font-size-lg:            24px !default;
+$line-height-lg:		  36px !default;
+
+$font-size-xl:            30px !default;
+$line-height-xl:    	  48px !default;
+
+// primary color
+
+$product-color-blue: 	  #2C9FDD !default;
+$product-color-green:     #4AC291 !default; 
+$product-color-purple:    #9C27B0 !default;
+$product-color-yellow:    #FEB909 !default;
+
+$color-font:			  #4C596B !default;
+$color-label:			  #8C8C8C !default;
+$color-line-rule:		  #E2E6E6 !default;
+
+$bg-color-blue:			  rgba( 44, 159, 221 , 0.1)	 !default;
+$bg-color-blue-active:	  darken($bg-color-blue,10%) !default;	  
+$bg-color-green:		  rgba( 74, 194, 145 , 0.1)	 !default;	  
+$bg-color-green-active:	  darken($bg-color-green,10%) !default;
+$bg-color-purple:		  rgba( 156, 39, 176 , 0.1) !default;
+$bg-color-purple-active:  darken($bg-color-purple,10%) !default;
+$bg-color-yellow:		  rgba( 254, 185, 9 , 0.1) !default;
+$bg-color-yellow-active:  darken($bg-color-yellow,10%) !default;		
+
+$alert-color-success: 	  #7CB342 !default;
+$alert-color-error: 	  #E53935 !default;
+$alert-color-warnning: 	  #FFB330 !default;
+$alert-color-info: 	  	  #1E88E5 !default;
+
+
+// typography
