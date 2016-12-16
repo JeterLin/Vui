@@ -1,5 +1,6 @@
 //fonts
-$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+$font-family-sans-serif:  "Nunito Sans","Helvetica Neue", Helvetica, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 
 // primary color
@@ -29,6 +30,8 @@ $alert-color-info: 	  	  #1E88E5 !default;
 
 
 // typography
+$font-size-sm:			  12px !default;
+$line-height-sm:		  18px !default;
 
 $font-size-base:          14px !default;
 $line-height-base:        22px !default;
@@ -42,13 +45,8 @@ $line-height-lg:		  36px !default;
 $font-size-xlg:           30px !default;
 $line-height-xlg:    	  48px !default;
 
-@mixin make-paragraph($font-size:14px,$line-height:22px){
-	p{
-		font-size:$font-size;
-		line-height:$line-height;
-		margin-bottom:$line-height / 2;
-	}
-}
+
+
 // spacing
 // small spacing 
 $space-sm:				  6px  !default;
@@ -58,11 +56,13 @@ $space-lg:				  36px !default;
 $space-xlg:				  84px !default;
 
 
-// grids
+// mixins to generate grids
 $cols:                    12 !default;
 @import './mixin';
 @mixin make-container{
 	padding:0;
+	margin:0 auto;
+
 	padding-left:($space-base / 2);
 	padding-right:($space-base / 2 ); 
 }
@@ -86,5 +86,101 @@ $cols:                    12 !default;
 	#{$selector-list}{
 		margin-left:($gutter / 2);
 		margin-right:($gutter / 2);
+	}
+}
+// mixins to generate paragraph
+@mixin make-paragraph($font-size:14px,$line-height:22px){
+	p{
+		font-size:$font-size;
+		line-height:$line-height;
+		margin-bottom:$line-height / 2;
+	}
+}
+
+// mixins to center elements
+// width must be set manually
+@mixin center-horizontal($ele){
+	@if($ele){
+		#{$ele}{
+			margin:0 auto;
+		}
+	}@else{
+		&{
+			margin:0 auto;
+		}
+	}
+}
+// parent  must be set 'position:relative' manually
+@mixin center-vertical-abs($ele){
+	$selector-name:'';
+	@if($ele){
+		$selector-name:$ele;
+	}@else{
+		$selector-name:'&';
+	}
+	#{$selector-name}{
+		position:absolute;
+		top:0;
+		bottom:0;
+		margin:auto 0;
+	}
+}
+
+// draw caret
+
+@mixin draw-caret($dir:'down',$size:5px,$ele:'after'){
+	$selector-name:'';
+	@if($ele == 'after' or $ele == 'before'){
+		$selector-name:'&:#{$ele}';
+		#{$selector-name}{
+			content:'';
+		}
+	}@else {
+		$selector-name:'#{$ele}'
+	}
+	#{$selector-name}{
+		display: block;
+		border:solid $size ;
+	
+		width: 0;
+		height: 0;
+		
+	}
+	@if($dir == 'up'){
+		#{$selector-name}{
+			border:{
+				top:none;
+				left-color:transparent;
+				right-color:transparent;
+
+			}
+		}
+	}
+	@if($dir == 'down'){
+		#{$selector-name}{
+			border:{
+				bottom:none;
+				left-color:transparent;
+				right-color:transparent;
+			}
+		}
+	}
+	@if($dir == 'left'){
+		#{$selector-name}{
+			border:{
+				left:none;
+				top-color:transparent;
+				bottom-color:transparent;
+			}
+		}
+	}
+	@if($dir == 'right'){
+		#{$selector-name}{
+			border:{
+				right:none;
+				top-color:transparent;
+				bottom-color:transparent;
+			}
+		}
 	}
 }
