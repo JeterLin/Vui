@@ -2,18 +2,6 @@
 $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 
-$font-size-base:          14px !default;
-$line-height-base:        22px !default;
-
-$font-size-normal:		  16px !default;
-$line-height-normal: 	  26px !default;
-
-$font-size-lg:            24px !default;
-$line-height-lg:		  36px !default;
-
-$font-size-xl:            30px !default;
-$line-height-xl:    	  48px !default;
-
 // primary color
 
 $product-color-blue: 	  #2C9FDD !default;
@@ -41,3 +29,62 @@ $alert-color-info: 	  	  #1E88E5 !default;
 
 
 // typography
+
+$font-size-base:          14px !default;
+$line-height-base:        22px !default;
+
+$font-size-normal:		  16px !default;
+$line-height-normal: 	  26px !default;
+
+$font-size-lg:            24px !default;
+$line-height-lg:		  36px !default;
+
+$font-size-xlg:           30px !default;
+$line-height-xlg:    	  48px !default;
+
+@mixin make-paragraph($font-size:14px,$line-height:22px){
+	p{
+		font-size:$font-size;
+		line-height:$line-height;
+		margin-bottom:$line-height / 2;
+	}
+}
+// spacing
+// small spacing 
+$space-sm:				  6px  !default;
+$space-base:			  12px !default;
+$space-md:				  24px !default;
+$space-lg:				  36px !default;
+$space-xlg:				  84px !default;
+
+
+// grids
+$cols:                    12 !default;
+@import './mixin';
+@mixin make-container{
+	padding:0;
+	padding-left:($space-base / 2);
+	padding-right:($space-base / 2 ); 
+}
+@mixin make-rows{
+	margin-left:-($space-base / 2);
+	margin-right:-($space-base / 2);
+	padding:0;
+	@include clearfix;
+}
+@mixin make-cols($cols:$cols,$gutter:$space-sm){
+	$selector-list:"cols-1";
+	.cols-1{
+		width:100% / $cols;
+	}
+	@for $i from 2 through $cols{
+		$selector-list:"#{$selector-list},cols-#{$i}";
+		.cols-#{$i} {
+			width:$i * 100% / $cols;
+		}
+	}
+	#{$selector-list}{
+		margin-left:($gutter / 2);
+		margin-right:($gutter / 2);
+	}
+}

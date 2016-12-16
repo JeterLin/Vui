@@ -1,12 +1,12 @@
 <template>
 	<nav id="right-nav">
-		this is right navigator bar
+		right nav
 	</nav>	
 </template>
 <style lang="scss">
 	#right-nav{
 		float:right;
-		width:20%;
+		width:30%;
 		background-color:#fcf;
 		height:100%;
 	}
