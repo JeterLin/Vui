@@ -1,12 +1,12 @@
 <template>
-	<nav id="right-nav">
+	<nav id="right-nav" v-fixed-menu>
 		<header class="component-name">
 			<span>Button</span>
 		</header>
 		<ul class="component-detail-list">
-			<li v-for="item in detailList" >
+			<li v-for="item in detailList" class="detail-item" :class="{active:item.isActive}">
 				<a href="#">{{item.detailType}}</a>
-				<ul class="detail-sublist " :class="{active:item.isActive}" >
+				<ul class="detail-sublist " >
 					<li v-for="subitem in item.subList" :class="{active:subitem.isActive}">
 						<a href="#">{{subitem.detailName}}</a>
 					</li>
@@ -16,6 +16,7 @@
 	</nav>	
 </template>
 <script >
+	import fixedMenu from './directives/fixedMenu.vue';
 	export default {
 		data(){
 			let subList = [
@@ -47,27 +48,27 @@
 			];
 			let detailList = [
 					{
-						detailType:"buttons",
+						detailType:"Buttons",
 						isActive:false,
 						subList:subList
 					},
 					{
-						detailType:"panels",
+						detailType:"Panels",
 						isActive:true,
 						subList:subList
 					},
 					{
-						detailType:"wells",
+						detailType:"Wells",
 						isActive:false,
 						subList:subList
 					},
 					{
-						detailType:"progress bars",
+						detailType:"Progress bars",
 						isActive:false,
 						subList:subList
 					},
 					{
-						detailType:"forms",
+						detailType:"Forms",
 						isActive:false,
 						subList:subList
 					}
@@ -75,6 +76,9 @@
 			return {
 				detailList:detailList
 			}
+		},
+		directives:{
+			'fixedMenu':fixedMenu
 		}
 	};
 </script>
@@ -82,34 +86,51 @@
 	@import "./style/common";
 	#right-nav{
 		float:right;
+		// position: fixed;
+		// top:195px;
+		// left:80%;
 		width:30%;
-		height:100%;
 		.component-name{
 			font-size:$font-size-normal;
+			padding-left:$space-base;
 		}
 		.component-detail-list{
 			width:250px;
 			font-size:$font-size-base;
-			a{display:block;}
-			>li>a{
+			a{
+				display:block;
+			}
+			.detail-item>a{
 				position: relative;
 				@include draw-caret('left');
 				&:after{
 					@include center-vertical-abs(null);
 					right:0;
 				}
+				border-left:solid transparent 2px;
+				padding-left:$space-base - 2px;
 			}
 			.detail-sublist{
 				display:none;
 				font-weight:normal;
 				font-size:$font-size-sm;
 				line-height:$line-height-normal;
+				padding-left:$space-base;
 				a:hover,.active{
 					color:$product-color-blue;
 				}
 			}
-			.detail-sublist.active{
-				display:block;
+			.detail-item.active{
+
+				.detail-sublist{
+					display:block;
+
+				}
+				
+				&>a{
+					 border-left:solid $product-color-blue;
+				}
+
 			}
 		}
 		.component-name,
