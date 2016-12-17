@@ -7,7 +7,7 @@
 			This modified bundle is served from memory at the relative path specified in publicPath (see API). It will not be written to your configured output directory. Where a bundle already exists at the same URL path, the bundle in memory takes precedence (by default).</p>
 		</header>
 		<div class="detail">
-			<right-nav></right-nav>	
+			<right-nav :detail-list="detailList"></right-nav>	
 		</div>
 	</section>
 </template>
@@ -15,7 +15,52 @@
 	import rightNav from "./rightNav.vue";
 	export default {
 		data(){
-			return {}
+			let subList = [
+				{
+					detailName:'DatePicker'
+				},
+				{
+					detailName:'Emphasis'
+				},
+				{
+					detailName:'Animated'
+				},
+				{
+					detailName:'Labeled'
+				},
+				{
+					detailName:'Icon'
+				},
+				{
+					detailName:'Loading'
+				}
+
+			];
+			let detailList = [
+					{
+						detailType:"Buttons",
+						subList:subList
+					},
+					{
+						detailType:"Panels",
+						subList:subList
+					},
+					{
+						detailType:"Wells",
+						subList:subList
+					},
+					{
+						detailType:"Progress bars",
+						subList:subList
+					},
+					{
+						detailType:"Forms",
+						subList:subList
+					}
+			];
+			return {
+				detailList
+			};
 		},
 		components:{
 			"rightNav":rightNav
