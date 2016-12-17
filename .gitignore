@@ -4,3 +4,7 @@ dist/
 npm-debug.log
 components.png
 color-font-draft.png
+*.zip
+*.rar
+*.7z
+fontfiles

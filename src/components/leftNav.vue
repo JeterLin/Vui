@@ -3,51 +3,74 @@
 		<header class="search-bar">
 			<input type="text" placeholder="search..." >
 		</header>
-		<ul class="component-list">
-				<li v-for="item in componentList" :class="{active:item.isActive}">
-					<a href="#">{{item.componentName}}</a>
+		<ul class="item-list">
+				<li v-for="item in itemList" :class="{active:item.isActive}">
+					<a :href="item.hashname" @click="cancelPreItem(item);clickWhich(item);">{{item.itemName}}</a>
 				</li>
 		</ul>
 	</nav>	
 </template>
 <script >
-	import eventBus from "./EventBus.vue";
+	import eventBus from "./eventBus.vue";
 	export default {
 		data(){
-			eventBus.on('activePanel',(obj)=>{
-				this.componentList[0].isActive=true;
-			});
-			let componentList=[
+			let itemList=[
 					{
-						componentName:"buttons",
+						itemName:"Introduction",
+						hashname:'#/intro',
 						isActive:false
 					},
 					{
-						componentName:"panels",
-						isActive:true
-					},
-					{
-						componentName:"wells",
+						itemName:"Buttons",
+						hashname:'#/buttons',
 						isActive:false
 					},
 					{
-						componentName:"progress bars",
-						isActive:false
-					},
-					{
-						componentName:"forms",
+						itemName:"NotButtons",
+						hashname:'#/notbuttons',
 						isActive:false
 					}
 				];
-			for(let i=0;i< 15;i++){
-				componentList.push(componentList[i%5]);
-			}
 			return {
-				componentList:componentList
+				itemList:itemList
 			}
 		},
-		methods:{
+		created(){
+			let hash = location.hash;
+			for( let item of this.itemList){
+				if(item.hashname === hash){
+					item.isActive = true;
+					this.item = item;
+					break;
+				}
+			}
+		},
 
+		methods:{
+			cancelPreItem(item){
+				if(!this.item){
+					this.item = item;
+				}else if(this.item != item){
+					this.item.isActive = false;
+					this.item = item;
+				}
+			},
+			clickWhich(item){
+				item.isActive = !item.isActive ;
+				switch(item.itemName){
+					case 'Introduction':
+					eventBus.emit('click.intro');
+					break;
+					case 'Buttons':
+					eventBus.emit('click.buttons');
+					break;
+					case 'NotButtons':
+					eventBus.emit('click.notbuttons');
+					break;
+					default:
+					break;
+				}
+			}
 		}
 	}
 </script>
@@ -60,7 +83,7 @@
 		width:30%;
 		height:100%;
 		padding-left:$space-md;
-		.component-list{
+		.item-list{
 
 			line-height:$line-height-lg;
 			li{

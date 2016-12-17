@@ -2,7 +2,7 @@
   <div id="ui-demo">
     <head-nav></head-nav>
     <left-nav></left-nav>
-    <intro></intro>    
+    <switch-wrapper></switch-wrapper>    
   </div>
 </template>
 
@@ -10,7 +10,8 @@
 import leftNav from "./leftNav.vue";
 import headNav from "./headNav.vue";
 
-import intro from "./intro.vue";
+// import intro from "./intro.vue";
+import switchWrapper from './switchWrapper.vue';
 
 export default {
   name: 'app',
@@ -19,7 +20,8 @@ export default {
   },
     components:{
       "left-nav":leftNav,
-      "intro":intro,
+      // "intro":intro,
+      "switchWrapper":switchWrapper,
       "headNav":headNav
     }
 }

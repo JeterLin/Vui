@@ -6,6 +6,7 @@
 				EventMap[event]=[];
 			}
 			EventMap[event].push(callback);
+			return this;
 		},
 		off(event,callback){
 			if(typeof callback === 'undefined'){
@@ -21,6 +22,7 @@
 					idx++;
 				}
 			}
+			return this;
 		},
 		once(event,callback){
 			// let self = this;
@@ -28,13 +30,15 @@
 				callback.apply(null,args);
 				this.off(event,proxyCallback);
 			};
-			this.on(event,proxyCallback);
+			return this.on(event,proxyCallback);
+
 		},
 		emit(event,...args){
 			let cbList = EventMap[event];
 			for(let fn  of cbList){
 				fn.apply(null,args);
 			}
+			return this;
 		}
 
 

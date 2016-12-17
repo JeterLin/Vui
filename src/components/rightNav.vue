@@ -1,11 +1,11 @@
 <template>
 	<nav id="right-nav" v-fixed-menu>
 		<header class="component-name">
-			<span>Button</span>
+			<span>Button </span>
 		</header>
 		<ul class="component-detail-list">
-			<li v-for="item in detailList" class="detail-item" :class="{active:item.isActive}">
-				<a href="#">{{item.detailType}}</a>
+			<li v-for="item in details" class="detail-item" :class="{active:item.isActive}" @click="closePreMenu(item);toggleMenu(item)">
+				<a href="javascript:;">{{item.detailType}}</a>
 				<ul class="detail-sublist " >
 					<li v-for="subitem in item.subList" :class="{active:subitem.isActive}">
 						<a href="#">{{subitem.detailName}}</a>
@@ -19,62 +19,50 @@
 	import fixedMenu from './directives/fixedMenu.vue';
 	export default {
 		data(){
-			let subList = [
-				{
-					detailName:'Button',
-					isActive:true
-				},
-				{
-					detailName:'Emphasis',
-					isActive:false
-				},
-				{
-					detailName:'Animated',
-					isActive:false
-				},
-				{
-					detailName:'Labeled',
-					isActive:false
-				},
-				{
-					detailName:'Icon',
-					isActive:false
-				},
-				{
-					detailName:'Loading',
-					isActive:false
-				}
-
-			];
-			let detailList = [
-					{
-						detailType:"Buttons",
-						isActive:false,
-						subList:subList
-					},
-					{
-						detailType:"Panels",
-						isActive:true,
-						subList:subList
-					},
-					{
-						detailType:"Wells",
-						isActive:false,
-						subList:subList
-					},
-					{
-						detailType:"Progress bars",
-						isActive:false,
-						subList:subList
-					},
-					{
-						detailType:"Forms",
-						isActive:false,
-						subList:subList
-					}
-			];
+			
 			return {
-				detailList:detailList
+				// detailList:detailList
+				// details:this.detailList
+				details:[]
+			};
+		},
+		props:['detailList'],
+		created(){
+			for( let item of this.detailList){
+				//can't add `isActive` field directly to each item of detailList
+				// as all fields of items aren't watched any longer , thus each item of detailList must be copied deeply
+				// item.isActive = false;
+				let subList = [];
+				for( let subitem of item.subList){
+					// subitem.isActive = false;
+					subList.push({
+						detailName:subitem.detailName,
+						isActive:false
+					});
+				}
+				this.details.push({
+					isActive:false,
+					detailType:item.detailType,
+					subList:subList
+				});
+
+			}
+			
+		},
+		methods:{
+			closePreMenu(item){
+
+				if(this && !this.item){
+					this.item = item;
+				}else if(this && this.item != item) {
+					this.item.isActive = false;
+					this.item = item;
+				}
+			},
+			toggleMenu(item){
+				if(item){
+					item.isActive = !item.isActive;
+				}
 			}
 		},
 		directives:{
@@ -128,6 +116,11 @@
 				}
 				
 				&>a{
+					 @include draw-caret('down');
+					 &:after{
+						@include center-vertical-abs(null);
+						right:0;					 	
+					 }
 					 border-left:solid $product-color-blue;
 				}
 
