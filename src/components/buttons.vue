@@ -13,8 +13,9 @@
 
 				This modified bundle is served from memory at the relative path specified in publicPath (see API). It will not be written to your configured output directory. Where a bundle already exists at the same URL path, the bundle in memory takes precedence (by default).</p>
 			</section>
-			<right-nav :detail-list="detailList"></right-nav>	
+				
 		</div>
+		<right-nav :detail-list="detailList"></right-nav>
 	</section>
 </template>
 <script >
@@ -76,22 +77,5 @@
 <style lang="scss">
 	@import "./style/mixin";
 	@import "./style/common";
-	#intro{
-		@include make-paragraph();
-		padding-left:$space-lg;
-		overflow: hidden;
-		.main-intro{
-			max-width:70%;
-		}
-		.detail{
-			// @include clearfix; 
-			height:5000px;
-		}
-		.title{
-
-			font-size:$font-size-lg;
-			line-height:$line-height-lg;
-		}
-
-	}
+	@import "./style/detail-intro";
 </style>

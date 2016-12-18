@@ -73,10 +73,9 @@
 <style lang="scss">
 	@import "./style/common";
 	#right-nav{
-		float:right;
-		// position: fixed;
-		// top:195px;
-		// left:80%;
+		position: absolute;
+		top:195px;
+		left:100%;
 		width:30%;
 		.component-name{
 			font-size:$font-size-normal;

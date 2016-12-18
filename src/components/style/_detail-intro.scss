@@ -1,0 +1,24 @@
+#intro{
+		position: relative;
+		@include make-paragraph();
+		padding-left:$space-lg;
+		padding-right:$space-lg;
+		// overflow: hidden;
+		display:inline-block;
+		width:50%;
+
+		.main-intro{
+			// max-width:70%;
+		}
+		.detail{
+			// @include clearfix; 
+			height:5000px;
+
+		}
+		.title{
+
+			font-size:$font-size-lg;
+			line-height:$line-height-lg;
+		}
+
+	}

@@ -70,22 +70,5 @@
 <style lang="scss">
 	@import "./style/mixin";
 	@import "./style/common";
-	#intro{
-		@include make-paragraph();
-		padding-left:$space-lg;
-		overflow: hidden;
-		.main-intro{
-			max-width:70%;
-		}
-		.detail{
-			// @include clearfix; 
-			height:5000px;
-		}
-		.title{
-
-			font-size:$font-size-lg;
-			line-height:$line-height-lg;
-		}
-
-	}
+	@import "./style/detail-intro";
 </style>
