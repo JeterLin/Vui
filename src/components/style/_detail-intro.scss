@@ -1,24 +1,60 @@
 #intro{
 		position: relative;
-		@include make-paragraph();
+		p{
+			@include make-paragraph();
+		}
 		padding-left:$space-lg;
 		padding-right:$space-lg;
-		// overflow: hidden;
 		display:inline-block;
 		width:50%;
-
+		color:$color-label;
 		.main-intro{
-			// max-width:70%;
 		}
 		.detail{
 			// @include clearfix; 
+
 			height:5000px;
 
 		}
 		.title{
-
+			font-weight: bold;
 			font-size:$font-size-lg;
 			line-height:$line-height-lg;
 		}
+		
 
+	}
+	.container {
+			@include make-container;
+	}
+	.row{
+		margin-top:$space-lg;
+		@include make-rows;
+	}
+	@include make-cols;
+	[class^="cols-"]:first-child{
+		line-height: $font-size-normal;
+		box-sizing:border-box;
+		padding-left:$space-xlg;
+		padding-top:$space-base;
+		padding-bottom:$space-base;
+	}
+	.outer-link{
+		
+		padding-left:$space-sm;
+		color:$product-color-blue;
+		&:last-of-type{
+			padding-right:$space-sm;
+		}
+		&:hover,&:active{
+			color:darken($product-color-blue,10%);
+			text-decoration: underline;
+		}
+	}
+	code{
+		color:$product-color-yellow;
+		background-color: $bg-color-yellow-active;
+		vertical-align: middle;
+		padding-left:$space-sm;
+		padding-right:$space-sm;
 	}

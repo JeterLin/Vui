@@ -74,6 +74,10 @@ $cols:                    12 !default;
 }
 @mixin make-cols($cols:$cols,$gutter:$space-sm){
 	$selector-list:"cols-1";
+	[class^="cols-"]{
+		box-sizing:border-box;
+		float:left;
+	}
 	.cols-1{
 		width:100% / $cols;
 	}
@@ -87,14 +91,13 @@ $cols:                    12 !default;
 		margin-left:($gutter / 2);
 		margin-right:($gutter / 2);
 	}
+
 }
 // mixins to generate paragraph
 @mixin make-paragraph($font-size:14px,$line-height:22px){
-	p{
-		font-size:$font-size;
-		line-height:$line-height;
-		margin-bottom:$line-height / 2;
-	}
+	font-size:$font-size;
+	line-height:$line-height;
+	margin-bottom:$line-height / 2;
 }
 
 // mixins to center elements
@@ -105,9 +108,7 @@ $cols:                    12 !default;
 			margin:0 auto;
 		}
 	}@else{
-		&{
-			margin:0 auto;
-		}
+		margin:0 auto;
 	}
 }
 // parent  must be set 'position:relative' manually

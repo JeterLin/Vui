@@ -1,0 +1,53 @@
+button{
+	border:none;
+}
+.btn{
+
+	padding:$space-base $space-md;
+	border-radius:2px;
+	&:hover {
+		cursor: pointer;
+	}
+	outline:none;
+
+}
+.btn-primary{
+	background-color:$product-color-blue;
+	color:#fff;
+}
+.btn-secondary{
+	background-color:#fff;
+	border:solid 1px $color-line-rule;
+	color:$product-color-blue;
+}
+.btn-primary{
+	&.btn-hover:hover{
+	background-color:lighten($product-color-blue,10%);
+	}
+}
+.btn-secondary{
+	&.btn-hover:hover{
+		background-color:$bg-color-blue;
+	}
+}
+.btn.btn-disable{
+	background-color:$color-line-rule;
+	color:#fff;
+	border:none;
+	cursor: not-allowed ;
+}
+
+.btn.btn-focus{
+	box-shadow:0 0 $space-sm $product-color-blue;
+}
+.btn-active{
+	
+	&.btn-secondary{
+		box-shadow:inset 0 0 $space-sm darken($bg-color-blue,10%);
+		background:linear-gradient(to bottom,darken($bg-color-blue,10%) ,$bg-color-blue $space-sm,$bg-color-blue );
+	}
+	&.btn-primary{
+		box-shadow:inset 0 0 $space-sm darken($product-color-blue,10%);
+		background:linear-gradient(to bottom,darken($product-color-blue,10%) ,$product-color-blue $space-sm , $product-color-blue);
+	}
+}

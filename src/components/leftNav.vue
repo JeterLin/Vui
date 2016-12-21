@@ -1,7 +1,7 @@
 <template>
 	<nav id="left-nav">
 		<header class="search-bar">
-			<input type="text" placeholder="search..." >
+			<input type="text" placeholder="搜索" >
 		</header>
 		<ul class="item-list">
 				<li v-for="item in itemList" :class="{active:item.isActive}">
@@ -16,17 +16,17 @@
 		data(){
 			let itemList=[
 					{
-						itemName:"Introduction",
+						itemName:"简介",
 						hashname:'#/intro',
 						isActive:false
 					},
 					{
-						itemName:"Buttons",
+						itemName:"按钮",
 						hashname:'#/buttons',
 						isActive:false
 					},
 					{
-						itemName:"NotButtons",
+						itemName:"其他",
 						hashname:'#/notbuttons',
 						isActive:false
 					}
@@ -57,14 +57,14 @@
 			},
 			clickWhich(item){
 				item.isActive = !item.isActive ;
-				switch(item.itemName){
-					case 'Introduction':
+				switch(item.hashname){
+					case '#/intro':
 					eventBus.emit('click.intro');
 					break;
-					case 'Buttons':
+					case '#/buttons':
 					eventBus.emit('click.buttons');
 					break;
-					case 'NotButtons':
+					case '#/notbuttons':
 					eventBus.emit('click.notbuttons');
 					break;
 					default:
