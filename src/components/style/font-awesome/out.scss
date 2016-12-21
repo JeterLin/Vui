@@ -1,5 +1,0 @@
-$fa-font-path:"../../../assets/fonts/font-awesome";
-@import "font-awesome";
-.test{
-	@extend %#{$fa-css-prefix}, .#{$fa-css-prefix}-spinner ,.#{$fa-css-prefix}-spin;
-}
