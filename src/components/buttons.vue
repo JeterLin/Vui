@@ -43,13 +43,23 @@
 							</div>
 							<div class="row">
 								<div class="cols-4">带转动图标</div>
+								<div class="cols-4">
+									 <button class="btn btn-primary btn-spinner">
+									 	Primary<span class="spinner spin"></span>
+									 </button>
+								 </div>
+								<div class="cols-4">
+									<button class="btn btn-secondary btn-spinner">
+										Secondary<span class="spinner spin"></span>
+									</button>
+								</div>
 							</div>
 						</div>
 				</section>
 			</section>
 				
 		</div>
-		<right-nav :detail-list="detailList"></right-nav>
+		<right-nav :details="details"></right-nav>
 	</section>
 </template>
 <script >
@@ -100,7 +110,10 @@
 					}
 			];
 			return {
-				detailList:detailList
+				details:{
+					componentName:"按钮",
+					detailList:detailList
+				}
 			};
 		},
 		components:{
@@ -109,6 +122,7 @@
 	}
 </script>
 <style lang="scss">
+	@import "./style/font-awesome/font-awesome";
 	@import "./style/mixin";
 	@import "./style/common";
 	@import "./style/detail-intro";

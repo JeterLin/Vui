@@ -7,7 +7,7 @@
 			This modified bundle is served from memory at the relative path specified in publicPath (see API). It will not be written to your configured output directory. Where a bundle already exists at the same URL path, the bundle in memory takes precedence (by default).</p>
 		</header>
 		<div class="detail">
-			<right-nav :detail-list="detailList"></right-nav>	
+			<right-nav :details="details"></right-nav>	
 		</div>
 	</section>
 </template>
@@ -59,7 +59,10 @@
 					}
 			];
 			return {
-				detailList
+				details:{
+					componetName:"其他",
+					detailList:detailList
+				}
 			};
 		},
 		components:{

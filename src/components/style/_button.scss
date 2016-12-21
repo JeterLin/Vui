@@ -51,3 +51,18 @@ button{
 		background:linear-gradient(to bottom,darken($product-color-blue,10%) ,$product-color-blue $space-sm , $product-color-blue);
 	}
 }
+.btn-spinner{
+	@extend %#{$fa-css-prefix};	
+}
+.spinner{
+	
+	padding-left:$space-sm;
+	&:before { content: $fa-var-spinner; }
+	&.spin{
+		&:before{
+			display: inline-block;
+			@extend .#{$fa-css-prefix}-spin;
+		}
+		
+	}
+}

@@ -1,10 +1,10 @@
 <template>
 	<nav id="right-nav" v-fixed-menu>
 		<header class="component-name">
-			<span>Button </span>
+			<span>{{details.componentName}} </span>
 		</header>
 		<ul class="component-detail-list">
-			<li v-for="item in details" class="detail-item" :class="{active:item.isActive}" @click="closePreMenu(item);toggleMenu(item)">
+			<li v-for="item in detailList" class="detail-item" :class="{active:item.isActive}" @click="closePreMenu(item);toggleMenu(item)">
 				<a href="javascript:;">{{item.detailType}}</a>
 				<ul class="detail-sublist " >
 					<li v-for="subitem in item.subList" :class="{active:subitem.isActive}">
@@ -21,14 +21,12 @@
 		data(){
 			
 			return {
-				// detailList:detailList
-				// details:this.detailList
-				details:[]
+				detailList:[]
 			};
 		},
-		props:['detailList'],
+		props:['details'],
 		created(){
-			for( let item of this.detailList){
+			for( let item of this.details.detailList){
 				//can't add `isActive` field directly to each item of detailList
 				// as all fields of items aren't watched any longer , thus each item of detailList must be copied deeply
 				// item.isActive = false;
@@ -40,7 +38,7 @@
 						isActive:false
 					});
 				}
-				this.details.push({
+				this.detailList.push({
 					isActive:false,
 					detailType:item.detailType,
 					subList:subList

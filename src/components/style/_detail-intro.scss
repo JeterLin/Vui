@@ -34,7 +34,7 @@
 	@include make-cols;
 	[class^="cols-"]:first-child{
 		line-height: $font-size-normal;
-		box-sizing:border-box;
+
 		padding-left:$space-xlg;
 		padding-top:$space-base;
 		padding-bottom:$space-base;
