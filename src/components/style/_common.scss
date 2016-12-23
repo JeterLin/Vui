@@ -1,6 +1,6 @@
 //fonts
 
-$font-family-sans-serif:  "Nunito Sans","Helvetica Neue", Helvetica, sans-serif !default;
+$font-family-sans-serif:  "Nunito Sans","Helvetica Neue",Microsoft YaHei, Helvetica, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 
 // primary color
@@ -51,6 +51,7 @@ $line-height-xlg:    	  48px !default;
 // small spacing 
 $space-sm:				  6px  !default;
 $space-base:			  12px !default;
+$space-normal:			  16px !default;
 $space-md:				  24px !default;
 $space-lg:				  36px !default;
 $space-xlg:				  84px !default;
@@ -73,7 +74,7 @@ $cols:                    12 !default;
 	@include clearfix;
 }
 @mixin make-cols($cols:$cols,$gutter:$space-sm){
-	$selector-list:"cols-1";
+	$selector-list:".cols-1";
 	[class^="cols-"]{
 		box-sizing:border-box;
 		float:left;
@@ -82,14 +83,15 @@ $cols:                    12 !default;
 		width:100% / $cols;
 	}
 	@for $i from 2 through $cols{
-		$selector-list:"#{$selector-list},cols-#{$i}";
+		$selector-list:"#{$selector-list},.cols-#{$i}";
 		.cols-#{$i} {
 			width:$i * 100% / $cols;
 		}
 	}
 	#{$selector-list}{
-		margin-left:($gutter / 2);
-		margin-right:($gutter / 2);
+		padding-left:($gutter / 2);
+		padding-right:($gutter / 2);
+
 	}
 
 }
@@ -183,5 +185,25 @@ $cols:                    12 !default;
 				bottom-color:transparent;
 			}
 		}
+	}
+}
+
+// draw circle 
+// make an element to be circular
+@mixin draw-circle($radius-size){
+	border-radius:50%;
+	width:$radius-size;
+	height:$radius-size;
+}
+// make dropdown list layout
+// this mixin must apply to `ul` or `ol` element
+@mixin make-droplist-layout($hz-padding:$space-base,$v-padding:$space-sm){
+	position: absolute;
+	li{
+		cursor: pointer;
+		padding-top:$v-padding;
+		padding-bottom:$v-padding;
+		padding-left:$hz-padding;
+		padding-right:$hz-padding;
 	}
 }

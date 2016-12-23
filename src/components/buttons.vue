@@ -1,14 +1,18 @@
 <template>
 	<section id="intro">
 		<header>
-			<p class="title">按钮</p>	
+			<h1 class="title">按钮</h1>	
 			<p class="main-intro">按钮作为一种常用的人机交互控件对于绝大多数人来说恐怕不会陌生了吧。得益于CSS的强大，我们可以将大多数HTML元素制作成按钮。但是，只有<code>&lt;boutton&gt;</code>元素可以设置tabindex，可以获得键盘tab键的焦点。所以按钮控件如无特别说明都以<code>&lt;boutton&gt;</code>来制作。</p>
 		</header>
 		<div class="detail">
 			<section>
-				<p class="title">类型</p>	
+				<h1 class="title">类型</h1>	
 				<section >
+						<header>
+							<h2 class="sub-title">状态</h2>
+						</header>					
 						<div class="container">
+							
 							<div class="row">
 								<div class="cols-4">
 									<span>默认</span>
@@ -44,17 +48,136 @@
 							<div class="row">
 								<div class="cols-4">带转动图标</div>
 								<div class="cols-4">
-									 <button class="btn btn-primary btn-spinner">
-									 	Primary<span class="spinner spin"></span>
+									 <button class="btn btn-primary ">
+									 	Primary<span class="btn-icon spinner"></span>
 									 </button>
 								 </div>
 								<div class="cols-4">
-									<button class="btn btn-secondary btn-spinner">
-										Secondary<span class="spinner spin"></span>
+									<button class="btn btn-secondary ">
+										Secondary<span class="btn-icon spinner spin"></span>
 									</button>
 								</div>
 							</div>
+
 						</div>
+				</section>
+				<section>
+					<header>
+						<h2 class="sub-title">图标按钮</h2>
+					</header>
+					<div class="container">
+						<div class="row">
+							<div class="cols-4">图标按钮</div>
+							<div class="cols-4">
+								<button class="btn btn-primary "><span class="btn-icon cart"></span></button>
+							</div>
+							<div class="cols-4">
+								<button class="btn btn-secondary btn-icon"><span class="btn-icon cart"></span></button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="cols-4">圆形按钮</div>
+							<div class="cols-4">
+								<button class="btn btn-primary  btn-circle"><span class="btn-icon cart"></span></button>
+							</div>
+							<div class="cols-4">
+								<button class="btn btn-secondary btn-circle"><span class="btn-icon cart"></span></button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="cols-4">图标按钮组</div>
+							<div class="cols-4">
+								<div class="btn-group">
+									<button class="btn btn-primary "><span class="btn-icon align-left"></span></button>
+									<button class="btn btn-primary "><span class="btn-icon align-right"></span></button>
+									<button class="btn btn-primary "><span class="btn-icon align-center"></span></button>
+								</div>
+							</div>
+
+							<div class="cols-4">
+								<div class="btn-group">
+									<button class="btn btn-secondary "><span class="btn-icon align-left"></span></button>
+									<button class="btn btn-secondary "><span class="btn-icon align-right"></span></button>
+									<button class="btn btn-secondary "><span class="btn-icon align-justify"></span></button>
+								</div>
+							</div>
+						</div>						
+					</div>
+				</section>
+				<section>
+					<header>
+						<h2 class="sub-title">标签化按钮</h2>
+					</header>
+					<div class="container">
+						<div class="row">
+							<div class="cols-6">右标签</div>
+							<div class="cols-6">
+								<div class="btn-group btn-label">
+									<button class="btn btn-primary "><span class="btn-icon cart"></span>Cart</button>
+									<span class="btn label">shopped!</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="cols-6">左标签</div>
+							<div class="cols-6">
+								<div class="btn-group btn-label">
+								<span class="btn label label-right-caret">shopped!</span>
+								<button class="btn btn-primary"><span class="btn-icon cart"></span>Cart</button>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="cols-6">标签化图标按钮</div>
+							<div class="cols-6">
+								<div class="btn-group btn-label">
+								
+								<button class="btn btn-primary "><span class="btn-icon heart"></span></button>
+								<span class="btn label label-left-caret">liked!</span>					
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section>
+				<h1 class="title">按钮尺寸</h1>
+				<section>
+					<div class="container">
+						<div class="row">
+							<div class="cols-6">默认大小</div>
+							<div class="cols-6">
+								<button class="btn btn-primary">Primary</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="cols-6">大按钮</div>
+							<div class="cols-6">
+								<button class="btn btn-primary btn-large">Create Campaign</button>
+							</div>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section>
+				<h1 class="title">按钮式下拉菜单</h1>
+				<section>
+					<div class="container">
+						<div class="row">
+							<div class="cols-6">默认</div>
+							<div class="cols-6">
+								<div class="btn-group btn-dropdown">
+									<button class="btn btn-primary">Primary</button>
+									<button class="btn btn-primary" @click="isDrop=!isDrop"><span class="dropdown-caret"></span></button>
+									<ul class="dropdown-list" v-show="isDrop" >
+										<li>list item 1</li>
+										<li>list item 2</li>
+										<li>list item 3</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</section>
 			</section>
 				
@@ -89,8 +212,18 @@
 			];
 			let detailList = [
 					{
-						detailType:"Buttons",
-						subList:subList
+						detailType:"类型",
+						subList:[
+							{
+								detailName:'状态'
+							},
+							{
+								detailName:'图标按钮'
+							},
+							{
+								detailName:'标签化按钮'
+							}
+						]
 					},
 					{
 						detailType:"Panels",
@@ -110,6 +243,7 @@
 					}
 			];
 			return {
+				isDrop:false,
 				details:{
 					componentName:"按钮",
 					detailList:detailList

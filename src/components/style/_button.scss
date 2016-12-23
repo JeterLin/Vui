@@ -1,10 +1,17 @@
+$btn-radius:2px !default;
+$btn-border-width:1px !default;
+$caret-size:8px !default;
 button{
 	border:none;
+	font-family:$font-family-sans-serif ;
+	font-size:$font-size-base;
+	line-height:$font-size-base;
 }
 .btn{
 
 	padding:$space-base $space-md;
-	border-radius:2px;
+	border-radius:$btn-radius;
+	border:solid $btn-border-width transparent;
 	&:hover {
 		cursor: pointer;
 	}
@@ -17,7 +24,7 @@ button{
 }
 .btn-secondary{
 	background-color:#fff;
-	border:solid 1px $color-line-rule;
+	border-color: $color-line-rule;
 	color:$product-color-blue;
 }
 .btn-primary{
@@ -64,5 +71,138 @@ button{
 			@extend .#{$fa-css-prefix}-spin;
 		}
 		
+	}
+}
+.btn-icon{
+	@extend %#{$fa-css-prefix};
+}
+
+.cart {
+
+	&:before{
+		content:$fa-var-shopping-cart;
+	}
+}
+.align-left{
+	&:before{
+		content:$fa-var-align-left;
+	}
+}
+.align-right{
+	&:before{
+		content: $fa-var-align-right;
+	}
+}
+.align-center{
+	&:before{
+		content:$fa-var-align-center;
+	}
+}
+.align-justify{
+	&:before{
+		content:$fa-var-align-justify;
+	}
+}
+.heart{
+	&:before {
+	 content: $fa-var-heart; 
+	 }
+}
+.btn-group{
+	@include clearfix;
+	.btn{
+		float:left;
+		border-radius:0;
+		// border-left-style:none;
+		border-right-style:none;	
+		&:first-of-type{
+			border-left-style:solid ;
+			border-top-left-radius:$btn-radius;
+			border-bottom-left-radius:$btn-radius;
+		}
+		&:last-of-type{
+			border-right-style:solid;
+			border-top-right-radius:$btn-radius;
+			border-bottom-right-radius:$btn-radius;
+		}
+	}
+}
+.btn-circle{
+	@include draw-circle($space-lg);
+	padding:0;
+}
+.btn-label{
+	.btn{
+		line-height: $font-size-base;
+		font-size:$font-size-base;
+	}
+	.btn-icon{
+		padding-right:$space-sm;
+	}
+	.label{
+		display: block;
+
+		padding:$space-base $space-base;
+		border-color: $color-line-rule;
+	}
+	.label-right-caret{
+		@include draw-caret('right',$caret-size);
+		position: relative;
+		&:after{
+			@include center-vertical-abs(null);
+			left: 100%;
+			border-left-color:#fff;
+
+		}
+	}
+	.label-left-caret{
+		@include draw-caret('left',$caret-size);
+		position: relative;
+		&:after{
+			@include center-vertical-abs(null);
+			right: 100%;
+			border-right-color:#fff;
+
+		}		
+	}
+}
+
+.btn-large{
+	padding-left:$space-lg;
+	padding-right:$space-lg;
+}
+
+.btn-dropdown{
+	display:table;
+	position: relative;
+	.btn:last-of-type{
+		margin-left:$space-sm / 3;
+		// padding :$space-sm;
+		padding:$space-base $space-normal;
+	}
+	.dropdown-caret{
+
+		@include draw-caret('down',$caret-size / 2);
+		&:after{
+			@include center-horizontal(null);
+			border-top-color:#fff;
+			$caret-padding:($font-size-base - $caret-size / 2) / 2;
+			margin-top:$caret-padding;
+			margin-bottom: $caret-padding;
+		}
+	}
+	
+	.dropdown-list{
+		$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;
+		@include make-droplist-layout;
+		margin-top:$droplist-padding;
+		border:solid 1px $color-line-rule;
+		border-radius:$btn-radius;
+		right: 0;
+		li{
+			&:hover{
+				background-color:$bg-color-blue;
+			}
+		}
 	}
 }
