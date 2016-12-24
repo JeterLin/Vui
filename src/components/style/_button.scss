@@ -1,17 +1,20 @@
 $btn-radius:2px !default;
 $btn-border-width:1px !default;
 $caret-size:8px !default;
+$btn-lin-large-width:180px !default;
 button{
 	border:none;
 	font-family:$font-family-sans-serif ;
-	font-size:$font-size-base;
-	line-height:$font-size-base;
+
 }
 .btn{
 
 	padding:$space-base $space-md;
 	border-radius:$btn-radius;
 	border:solid $btn-border-width transparent;
+
+	font-size:$font-size-base;
+	line-height:$font-size-base;
 	&:hover {
 		cursor: pointer;
 	}
@@ -58,8 +61,8 @@ button{
 		background:linear-gradient(to bottom,darken($product-color-blue,10%) ,$product-color-blue $space-sm , $product-color-blue);
 	}
 }
-.btn-spinner{
-	@extend %#{$fa-css-prefix};	
+.btn-icon{
+	@extend %#{$fa-css-prefix};
 }
 .spinner{
 	
@@ -73,9 +76,7 @@ button{
 		
 	}
 }
-.btn-icon{
-	@extend %#{$fa-css-prefix};
-}
+
 
 .cart {
 
@@ -108,10 +109,17 @@ button{
 	 content: $fa-var-heart; 
 	 }
 }
+
 .btn-group{
 	@include clearfix;
+	margin-top:$space-base;
+	&:first-of-type{
+		margin-top:0;
+	}
 	.btn{
+
 		float:left;
+		box-sizing:border-box;
 		border-radius:0;
 		// border-left-style:none;
 		border-right-style:none;	
@@ -199,10 +207,68 @@ button{
 		border:solid 1px $color-line-rule;
 		border-radius:$btn-radius;
 		right: 0;
+		box-shadow:0 $space-sm / 2 $space-sm  $color-line-rule;
 		li{
+
 			&:hover{
 				background-color:$bg-color-blue;
 			}
 		}
+	}
+}
+
+.btn-link{
+	display:block;
+	padding-left:0;
+	padding-right:0;
+	text-align:center;
+	color:$product-color-blue;
+	text-decoration:none;
+	border-radius:$btn-radius;
+	&:hover{
+		border:solid 1px $product-color-blue;
+		background-color:$bg-color-blue;
+	}
+}
+.btn-group {
+	$btn-link-count:3 !default;
+	.btn-link{
+		@include split-into-cols($btn-link-count);
+		border-right: solid 1px $color-line-rule;
+		&:last-child{
+			border-right-color:transparent;
+		}
+		&:hover{
+			border-right-color:$product-color-blue
+		}
+	}
+}
+
+.btn-link-large{
+
+	width:$btn-lin-large-width;
+	padding-left:$space-normal;
+	padding-right:$space-normal;
+	[class^="btn-"]{
+		display: block;
+		padding-top:$space-base;
+	}
+	.btn-header{
+		color:$color-label;
+		font-size:$font-size-xlg;
+	}
+	&:hover{
+		.btn-header{
+			color:$product-color-blue;
+		}
+	}
+	.btn-header-name{
+		color:$color-font;
+	}
+	.btn-body{
+		padding-top:$space-normal;
+		padding-bottom:$space-normal;
+		line-height: 1.5;
+		color:$color-label;
 	}
 }

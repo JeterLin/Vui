@@ -2,7 +2,8 @@
   <div id="ui-demo">
     <head-nav></head-nav>
     <left-nav></left-nav>
-    <switch-wrapper></switch-wrapper>    
+    <switch-wrapper></switch-wrapper>   
+    <footer></footer> 
   </div>
 </template>
 
@@ -45,5 +46,12 @@ export default {
     @include clearfix;
     width:100%;
     height:100%;
+    >footer {
+      // display:inline-block;
+      overflow:hidden;
+
+      height:80px;
+    }
   }
+
 </style>

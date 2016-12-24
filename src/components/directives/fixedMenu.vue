@@ -15,7 +15,7 @@
 	let getElementLeft=(el)=>{
 		let actualLeft = 0;
 		while(el){
-			console.info(el);
+			// console.info(el);
 			actualLeft += el.offsetLeft;
 			el = el.offsetParent;
 		}

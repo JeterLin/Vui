@@ -5,10 +5,10 @@
 		</header>
 		<ul class="component-detail-list">
 			<li v-for="item in detailList" class="detail-item" :class="{active:item.isActive}" @click="closePreMenu(item);toggleMenu(item)">
-				<a href="javascript:;">{{item.detailType}}</a>
+				<a href="javascript:;">{{item.title}}</a>
 				<ul class="detail-sublist " >
-					<li v-for="subitem in item.subList" :class="{active:subitem.isActive}">
-						<a href="#">{{subitem.detailName}}</a>
+					<li v-for="subitem in item.subtitles" :class="{active:subitem.isActive}">
+						<a href="#">{{subitem.title}}</a>
 					</li>
 				</ul>
 			</li>
@@ -26,26 +26,7 @@
 		},
 		props:['details'],
 		created(){
-			for( let item of this.details.detailList){
-				//can't add `isActive` field directly to each item of detailList
-				// as all fields of items aren't watched any longer , thus each item of detailList must be copied deeply
-				// item.isActive = false;
-				let subList = [];
-				for( let subitem of item.subList){
-					// subitem.isActive = false;
-					subList.push({
-						detailName:subitem.detailName,
-						isActive:false
-					});
-				}
-				this.detailList.push({
-					isActive:false,
-					detailType:item.detailType,
-					subList:subList
-				});
-
-			}
-			
+			this.detailList = this.details.detailList;
 		},
 		methods:{
 			closePreMenu(item){

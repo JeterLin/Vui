@@ -95,11 +95,28 @@ $cols:                    12 !default;
 	}
 
 }
+@mixin split-into-cols($cols:$cols){
+	width:100% / $cols;
+}
+// 
 // mixins to generate paragraph
 @mixin make-paragraph($font-size:14px,$line-height:22px){
 	font-size:$font-size;
 	line-height:$line-height;
 	margin-bottom:$line-height / 2;
+}
+
+// make dropdown list layout
+//  must apply this mixin to `ul` or `ol` element
+@mixin make-droplist-layout($hz-padding:$space-base,$v-padding:$space-sm){
+	position: absolute;
+	li{
+		cursor: pointer;
+		padding-top:$v-padding;
+		padding-bottom:$v-padding;
+		padding-left:$hz-padding;
+		padding-right:$hz-padding;
+	}
 }
 
 // mixins to center elements
@@ -195,15 +212,4 @@ $cols:                    12 !default;
 	width:$radius-size;
 	height:$radius-size;
 }
-// make dropdown list layout
-// this mixin must apply to `ul` or `ol` element
-@mixin make-droplist-layout($hz-padding:$space-base,$v-padding:$space-sm){
-	position: absolute;
-	li{
-		cursor: pointer;
-		padding-top:$v-padding;
-		padding-bottom:$v-padding;
-		padding-left:$hz-padding;
-		padding-right:$hz-padding;
-	}
-}
+
