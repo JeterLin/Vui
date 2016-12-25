@@ -1,5 +1,5 @@
 <script >
-	let titlesMap =[];
+	let titlesMap = new Array();
 	
 	const TitleItem = class {
 		constructor(rank,title='',subtitles=[]){
@@ -47,10 +47,22 @@
 			},mills);
 		};
 	};
+	let once=function(fn){
+		let flag = true;
+		return function(...args){
+			if(flag){
+				flag = false;
+				fn.apply(this,args);
+			}
+		}
+	};
 	let insertedEndList  = [];
 	let preRank = -1;
 	insertedEndList.push(debounce(function(){
+		titlesMap = [];
 		stack.beEmpty();
+		stack.push(titlesMap);
+		preRank = -1;
 		// console.info(titlesMap);
 	}));
 	export default {
@@ -77,7 +89,11 @@
 			}
 		},
 		onInsertedEnd(fn){
-			insertedEndList.push(debounce(fn));
+			// insertedEndList.push(debounce(fn));
+			insertedEndList.unshift(debounce(fn));
+		},
+		onceInsertedEnd(fn){
+			insertedEndList.unshift(once(debounce(fn)));
 		}
 	};
 </script>

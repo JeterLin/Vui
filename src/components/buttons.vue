@@ -266,9 +266,8 @@
 		componentName:"按钮",
 		detailList:[]
 	};
-	xtitle.onInsertedEnd((titlesMap)=>{
+	xtitle.onceInsertedEnd((titlesMap)=>{
 		let q = [];
-		
 		for(let iter of titlesMap){
 			q.push(iter);
 		}

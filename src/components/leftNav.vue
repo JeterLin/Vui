@@ -50,7 +50,7 @@
 			cancelPreItem(item){
 				if(!this.item){
 					this.item = item;
-				}else if(this.item != item){
+				}else {
 					this.item.isActive = false;
 					this.item = item;
 				}
