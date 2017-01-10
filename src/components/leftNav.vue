@@ -4,9 +4,9 @@
 			<input type="text" placeholder="搜索" >
 		</header>
 		<ul class="item-list">
-				<li v-for="item in itemList" :class="{active:item.isActive}">
-					<a :href="item.hashname" @click="cancelPreItem(item);clickWhich(item);">{{item.itemName}}</a>
-				</li>
+			<li v-for="item in itemList" :class="{active:item.isActive}">
+				<a :href="item.hashname" @click="cancelPreItem(item);clickWhich(item);">{{item.itemName}}</a>
+			</li>
 		</ul>
 	</nav>	
 </template>
@@ -79,8 +79,8 @@
 
 	#left-nav{
 		float:left;
-		max-width:300px;
-		width:30%;
+		width:300px;
+		// width:30%;
 		height:100%;
 		padding-left:$space-md;
 		.item-list{

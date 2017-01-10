@@ -52,10 +52,12 @@
 <style lang="scss">
 	@import "./style/common";
 	#right-nav{
-		position: absolute;
-		top:195px;
-		left:100%;
+		float:left;
 		width:30%;
+		position: relative;
+		top:195px;
+		// left:100%;
+		
 		.component-name{
 			font-size:$font-size-normal;
 			padding-left:$space-base;

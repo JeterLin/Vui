@@ -30,7 +30,7 @@
 		isEmpty(){
 			return this.container.length === 0;
 		}
-		beEmpty(){
+		clear(){
 			while(!this.isEmpty())this.pop();
 		}
 	};
@@ -58,12 +58,14 @@
 	};
 	let insertedEndList  = [];
 	let preRank = -1;
+	// must ensure this callback is the last element of `insertedEndList`
 	insertedEndList.push(debounce(function(){
+		// reset all data in the `stack` `titlesMap` `preRank`
+		// every time the whole page of `v-xtitle` directives are inserted
 		titlesMap = [];
-		stack.beEmpty();
+		stack.clear();
 		stack.push(titlesMap);
 		preRank = -1;
-		// console.info(titlesMap);
 	}));
 	export default {
 		inserted(el,binding){
@@ -88,10 +90,12 @@
 				fn.call(this,titlesMap);
 			}
 		},
+		// execute `fn` every time the whole page of `v-xtitle` directives are inserted
 		onInsertedEnd(fn){
 			// insertedEndList.push(debounce(fn));
 			insertedEndList.unshift(debounce(fn));
 		},
+		// execute `fn` for one time when the whole page of `v-xtitle` directives are inserted
 		onceInsertedEnd(fn){
 			insertedEndList.unshift(once(debounce(fn)));
 		}

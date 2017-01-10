@@ -1,6 +1,7 @@
 <template>
-	<section id="intro">
-		<header>
+	<intro-tmpl>
+		<div slot="in-body">
+			<header>
 			<h1 class="title" >按钮</h1>	
 			<p class="main-intro">按钮作为一种常用的人机交互控件对于绝大多数人来说恐怕不会陌生了吧。得益于CSS的强大，我们可以将大多数HTML元素制作成按钮。但是，只有<code>&lt;boutton&gt;</code>元素可以设置tabindex，可以获得键盘tab键的焦点。所以按钮控件如无特别说明都以<code>&lt;boutton&gt;</code>来制作。</p>
 		</header>
@@ -255,13 +256,19 @@
 				</section>
 			</section>
 				
+			</div>
+			<!-- div.detail end-->
 		</div>
-		<right-nav :details="details"></right-nav>
-	</section>
+		<!-- slot=in-body end -->
+		<div slot="out-body">
+			<right-nav :details="details"></right-nav>
+		</div>
+	</intro-tmpl>
 </template>
 <script >
 	import rightNav from "./rightNav.vue";
 	import xtitle from "./directives/xtitle.vue";
+	import introtmpl from "./templates/intro-tmpl.vue";
 	let details = {
 		componentName:"按钮",
 		detailList:[]
@@ -304,7 +311,8 @@
 			};
 		},
 		components:{
-			"rightNav":rightNav
+			"rightNav":rightNav,
+			"introTmpl":introtmpl
 		},
 		directives:{
 			"xtitle":xtitle
@@ -313,8 +321,6 @@
 </script>
 <style lang="scss">
 	@import "./style/font-awesome/font-awesome";
-	@import "./style/mixin";
 	@import "./style/common";
-	@import "./style/detail-intro";
 	@import "./style/button";
 </style>

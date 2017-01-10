@@ -53,12 +53,15 @@
 					return getBsWinScrollTop();
 				}
 			};
-			// let originPos = (getComputedStyle(el)['position'] == '' ? el.style.position : getComputedStyle(el)['position']);
-			// let originLeft = (getComputedStyle(el)['left'] == '' ? el.style.left : getComputedStyle(el)['left']).replace('px','');
-			let originLeft = el.offsetLeft;
+			let originPos = (getComputedStyle(el)['position'] == '' ? el.style.position : getComputedStyle(el)['position']);
+			let originLeft = (getComputedStyle(el)['left'] == '' ? el.style.left : getComputedStyle(el)['left']).replace('px','');
+			let originTop  = (getComputedStyle(el)['top'] == '' ? el.style.top : getComputedStyle(el)['top'].replace('px',''));
+			originPos = (originPos === '') ? 'static' : originPos;
+			// originLeft = el.offsetLeft;
+
 			let actualLeft = getElementLeft(el);
 			let actualTop = getElementTop(el);
-			let originTop = el.offsetTop;
+			// let originTop = el.offsetTop;
 			
 			let topDiff = 0;
 			let isSetFlag = false;
@@ -74,12 +77,9 @@
 					}
 				}else {
 					if(isSetFlag){
-						el.style.position = 'absolute';
+						el.style.position = originPos;
 						el.style.top = originTop + "px";
 						el.style.left = originLeft + "px";
-						// el.style.position = (originPos == '' ? 'static' : originPos);
-						// el.style.top = (originPos == '' ? 0 : originTop)+"px";
-						// el.style.left = (originPos == '' ? 0 : originLeft)+"px";
 						isSetFlag  = false;
 					}
 				}
