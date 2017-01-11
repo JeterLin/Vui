@@ -1,0 +1,88 @@
+.menu-list{
+	display:table;
+	a{
+		text-decoration: none;
+	}
+	color:#fff;
+
+	.menu-item{
+		position: relative;
+		background-color:$product-color-blue;
+		&:hover{
+			background-color: transparentize($product-color-blue,0.2);
+			.sub-menu-list{
+				display: table;
+			}
+		}
+		>.item-name{
+			padding:$space-normal $space-md;
+			display: block;
+			height: 100%;
+		}
+	}
+	.sub-menu-list{
+		display: none;
+		position: absolute;
+		z-index:1;
+		top:100%;
+		color:$product-color-blue;
+		
+		.menu-item{
+			background-color:#eee;
+			width: 100%;	
+			&:hover{
+				background-color:#ddd;
+			}
+		}
+	}
+}
+.menu-list-hz{
+	@include clearfix;
+	.menu-item{
+		float:left;
+	}
+}
+.menu-list-vec{
+	
+	.sub-menu-list{
+		top:0;
+		left:100%;
+
+	}
+}
+.menu-list-group{
+	color:$color-font;
+	border:solid 1px $color-line-rule;
+	.menu-item{
+		background-color:#fff;
+		position: static;
+		&:hover{
+			background:none;
+			.sub-menu-list{
+				display: block;
+			}
+		}
+	}
+	.sub-menu-list{
+		position: static;
+		display: block;
+		color:$color-label;
+		border-top:solid 1px $color-line-rule;
+		border-bottom:solid 1px $color-line-rule;
+		.item-name{
+			padding:{
+				top:$space-base;
+				bottom:$space-base;
+			}
+		}
+		.menu-item{
+			line-height: $line-height-sm;
+			font-size:$font-size-sm;
+			background:none;
+			&:hover{
+				color:$product-color-blue;
+				background:$bg-color-blue;
+			}
+		}
+	}	
+}

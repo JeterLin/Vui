@@ -95,6 +95,10 @@ $cols:                    12 !default;
 	}
 
 }
+@mixin reset-cols-gutter($gutter:$space-sm){
+	padding-left:$gutter / 2;
+	padding-right:$gutter / 2;
+}
 @mixin split-into-cols($cols:$cols){
 	width:100% / $cols;
 }

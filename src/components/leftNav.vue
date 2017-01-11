@@ -26,6 +26,11 @@
 						isActive:false
 					},
 					{
+						itemName:"菜单",
+						hashname:"#/menus",
+						isActive:false
+					},
+					{
 						itemName:"其他",
 						hashname:'#/notbuttons',
 						isActive:false
@@ -63,6 +68,9 @@
 					break;
 					case '#/buttons':
 					eventBus.emit('click.buttons');
+					break;
+					case '#/menus':
+					eventBus.emit('click.menus');
 					break;
 					case '#/notbuttons':
 					eventBus.emit('click.notbuttons');

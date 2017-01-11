@@ -1,16 +1,19 @@
 <template>
-	<component :is="currentView.msg" ></component>
+	<component :is="currentView.viewName" ></component>
 </template>
 <script>
 	import eventBus from './eventBus.vue';
-	let currentView = {msg:'intro'};
+	let currentView = {viewName:'intro'};
 	let createdWithHash = {};
 	eventBus.on('click.intro',function(){
-		currentView.msg = 'intro';
+		currentView.viewName = 'intro';
 	}).on('click.buttons',function(){
-		currentView.msg = 'buttons';
+		currentView.viewName = 'buttons';
 	}).on('click.notbuttons',function(){
-		currentView.msg = 'notButtons';
+		currentView.viewName = 'notButtons';
+	}).on('click.menus',function(){
+
+		currentView.viewName = 'menus';
 	});
 	export default {
 		data(){
@@ -21,11 +24,13 @@
 		created(){
 			let hash = location.hash.replace(/^#\//,'');
 			if(hash === 'intro'){
-				currentView.msg = 'intro';
+				currentView.viewName = 'intro';
 			}else if(hash === 'buttons') {
-				currentView.msg = 'buttons';
+				currentView.viewName = 'buttons';
 			}else if(hash === 'notbuttons'){
-				currentView.msg = 'notButtons';
+				currentView.viewName = 'notButtons';
+			}else if(hash === 'menus'){
+				currentView.viewName = 'menus';
 			}
 			let fn = createdWithHash[hash];
 			if(typeof fn === 'function'){
@@ -40,8 +45,12 @@
 			'buttons':function(resolve,reject){
 				require(['./buttons.vue'],resolve);
 			},
+
 			'notButtons':function(resolve,reject){
 				require(['./notButtons.vue'],resolve);
+			},
+			'menus':function(resolve,reject){
+				require(['./menus.vue'],resolve);
 			}
 		},
 	};

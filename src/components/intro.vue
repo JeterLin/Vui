@@ -9,14 +9,15 @@
 </intro-tmpl>
 </template>
 <script >
-	import introtmpl from "./templates/intro-tmpl.vue";
+	import introTmpl from "./templates/introTmpl.vue";
 	export default {
 		data(){
 			return {}
 		},
 		components:{
-			"introTmpl":introtmpl
+			"introTmpl":introTmpl
 		}
 
-	}
+	};
+	
 </script>

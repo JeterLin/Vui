@@ -36,7 +36,7 @@
 	};
 	let stack = new Stack();
 	stack.push(titlesMap);
-	let debounce=function(fn,mills=200){
+	let debounce=function(fn,mills=100){
 
 		let timer = null;
 		return function(...args){
