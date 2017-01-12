@@ -133,6 +133,17 @@ button{
 			border-top-right-radius:$btn-radius;
 			border-bottom-right-radius:$btn-radius;
 		}
+		
+	}
+	.btn-primary{
+		&:hover{
+			background-color:transparentize($product-color-blue,0.2);
+		}
+	}
+	.btn-secondary{
+		&:hover{
+			background-color:$bg-color-blue;
+		}
 	}
 }
 .btn-circle{

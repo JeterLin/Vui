@@ -23,17 +23,18 @@
 								<div class="cols-2">
 									<span>纵向菜单</span>
 								</div>
-								<div class="cols-10">
+								<div class="cols-4" >
 									<menu-tmpl :listModel="listModel" :listType="'menu-list-vec'"></menu-tmpl>
 								</div>
-							</div>
-							<div class="row">
 								<div class="cols-2">
 									<span>菜单组</span>
 								</div>
-								<div class="cols-10">
+								<div class="cols-4">
 									<menu-tmpl :listModel="listModel" :listType="'menu-list-group'"></menu-tmpl>
 								</div>
+ 							</div>
+							<div class="row">
+								
 							</div>
 						</div>
 

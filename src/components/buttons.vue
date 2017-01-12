@@ -17,44 +17,86 @@
 										<span>默认</span>
 									</div>
 									<div class="cols-4">
-										<button class="btn btn-primary">Primary</button>
+										<btn-tmpl btnType="btn-primary">
+											Primary
+										</btn-tmpl>
 									</div>
 									<div class="cols-4">
-										<button class="btn btn-secondary">Secondary</button>
+										<btn-tmpl btnType="btn-secondary">
+											Secondary
+										</btn-tmpl>
 									</div>
 
 								</div>
 								<div class="row">
 									<div class="cols-4">浮动</div>
-									<div class="cols-4"><button class="btn btn-primary btn-hover">Primary</button></div>
-									<div class="cols-4"><button class="btn btn-secondary btn-hover">Secondary</button></div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-primary btn-hover">Primary</button> -->
+										<btn-tmpl btnType="btn-primary" btnState="btn-hover">
+											Primary
+										</btn-tmpl>
+									</div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-secondary btn-hover">Secondary</button> -->
+										<btn-tmpl btnType="btn-secondary" btnState="btn-hover">
+											Secondary
+										</btn-tmpl>
+									</div>
 								</div>
 								<div class="row">
 									<div class="cols-4">获取焦点</div>
-									<div class="cols-4"><button class="btn btn-primary btn-focus">Primary</button></div>
-									<div class="cols-4"><button class="btn btn-secondary btn-focus">Secondary</button></div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-primary btn-focus">Primary</button> -->
+										<btn-tmpl btnType="btn-primary" btnState="btn-focus">
+											Primary
+										</btn-tmpl>
+									</div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-secondary btn-focus">Secondary</button> -->
+										<btn-tmpl btnType="btn-secondary" btnState="btn-focus">
+											Secondary
+										</btn-tmpl>
+									</div>
 								</div>
 								<div class="row">
 									<div class="cols-4">激活</div>
-									<div class="cols-4"><button class="btn btn-primary btn-active">Primary</button> </div>
-									<div class="cols-4"><button class="btn btn-secondary btn-active">Secondary</button></div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-primary btn-active">Primary</button>  -->
+										<btn-tmpl btnType="btn-primary" btnState="btn-active">Primary</btn-tmpl>
+									</div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-secondary btn-active">Secondary</button> -->
+										<btn-tmpl btnType="btn-secondary" btnState="btn-active">Secondary</btn-tmpl>
+									</div>
 								</div>
 								<div class="row">
 									<div class="cols-4">禁用</div>
-									<div class="cols-4"><button class="btn btn-primary btn-disable">Primary</button></div>
-									<div class="cols-4"><button class="btn btn-secondary btn-disable">Secondary</button></div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-primary btn-disable">Primary</button> -->
+										<btn-tmpl btnType="btn-primary" btnState="btn-disable">Primary</btn-tmpl>
+									</div>
+									<div class="cols-4">
+										<!-- <button class="btn btn-secondary btn-disable">Secondary</button> -->
+										<btn-tmpl btnType="btn-secondary" btnState="btn-disable">Secondary</btn-tmpl>
+									</div>
 								</div>
 								<div class="row">
 									<div class="cols-4">带转动图标</div>
 									<div class="cols-4">
-										 <button class="btn btn-primary ">
+									<!-- 	 <button class="btn btn-primary ">
 										 	Primary<span class="btn-icon spinner"></span>
-										 </button>
+										 </button> -->
+										 <btn-tmpl btnType="btn-primary" :btnIcon="{iconName:'spinner',aniType:'spin'}">
+										 	Primary
+										 </btn-tmpl>
 									 </div>
 									<div class="cols-4">
-										<button class="btn btn-secondary ">
+										<!--<button class="btn btn-secondary ">
 											Secondary<span class="btn-icon spinner spin"></span>
-										</button>
+										</button> -->
+										<btn-tmpl btnType="btn-secondary" :btnIcon="{iconName:'spinner',aniType:'spin'}">
+											Secondary
+										</btn-tmpl>
 									</div>
 								</div>
 
@@ -66,37 +108,42 @@
 							<div class="row">
 								<div class="cols-4">图标按钮</div>
 								<div class="cols-4">
-									<button class="btn btn-primary "><span class="btn-icon cart"></span></button>
+									<!-- <button class="btn btn-primary "><span class="btn-icon cart"></span></button> -->
+									<btn-tmpl btnType="btn-primary" btnIcon="cart"></btn-tmpl>
 								</div>
 								<div class="cols-4">
-									<button class="btn btn-secondary btn-icon"><span class="btn-icon cart"></span></button>
+									<!-- <button class="btn btn-secondary btn-icon"><span class="btn-icon cart"></span></button> -->
+									<btn-tmpl btnType="btn-secondary" btnIcon="cart"></btn-tmpl>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-4">圆形按钮</div>
 								<div class="cols-4">
-									<button class="btn btn-primary  btn-circle"><span class="btn-icon cart"></span></button>
+									<!-- <button class="btn btn-primary  btn-circle"><span class="btn-icon cart"></span></button> -->
+									<btn-tmpl :btnType="['btn-primary','btn-circle']" btnIcon="cart"></btn-tmpl>
 								</div>
 								<div class="cols-4">
-									<button class="btn btn-secondary btn-circle"><span class="btn-icon cart"></span></button>
+									<!-- <button class="btn btn-secondary btn-circle"><span class="btn-icon cart"></span></button> -->
+									<btn-tmpl :btnType="['btn-secondary','btn-circle']" btnIcon="cart"></btn-tmpl>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-4">图标按钮组</div>
 								<div class="cols-4">
-									<div class="btn-group">
-										<button class="btn btn-primary "><span class="btn-icon align-left"></span></button>
-										<button class="btn btn-primary "><span class="btn-icon align-right"></span></button>
-										<button class="btn btn-primary "><span class="btn-icon align-center"></span></button>
-									</div>
+									<btn-group >
+										<btn-tmpl btnType="btn-primary" btnIcon="align-left"></btn-tmpl>
+										<btn-tmpl btnType="btn-primary" btnIcon="align-right"></btn-tmpl>
+
+										<btn-tmpl btnType="btn-primary" btnIcon="align-center"></btn-tmpl>										
+									</btn-group>
 								</div>
 
 								<div class="cols-4">
-									<div class="btn-group">
-										<button class="btn btn-secondary "><span class="btn-icon align-left"></span></button>
-										<button class="btn btn-secondary "><span class="btn-icon align-right"></span></button>
-										<button class="btn btn-secondary "><span class="btn-icon align-justify"></span></button>
-									</div>
+									<btn-group>
+										<btn-tmpl btnType="btn-secondary" btnIcon="align-left"></btn-tmpl>
+										<btn-tmpl btnType="btn-secondary" btnIcon="align-right"></btn-tmpl>
+										<btn-tmpl btnType="btn-secondary" btnIcon="align-justify"></btn-tmpl>
+									</btn-group>
 								</div>
 							</div>						
 						</div>
@@ -107,29 +154,33 @@
 							<div class="row">
 								<div class="cols-6">右标签</div>
 								<div class="cols-6">
-									<div class="btn-group btn-label">
+							<!-- 		<div class="btn-group btn-label">
 										<button class="btn btn-primary "><span class="btn-icon cart"></span>Cart</button>
 										<span class="btn label">shopped!</span>
-									</div>
+									</div> -->
+								<btn-label btnIcon="cart" btnText="Cart" labelText="shopped!"></btn-label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-6">左标签</div>
 								<div class="cols-6">
-									<div class="btn-group btn-label">
+									<!-- <div class="btn-group btn-label">
 									<span class="btn label label-right-caret">shopped!</span>
 									<button class="btn btn-primary"><span class="btn-icon cart"></span>Cart</button>
-									</div>
+									</div> -->
+
+									<btn-label btnIcon="cart" btnText="Cart" labelText="shopped!" caretAlign="right" ></btn-label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-6">标签化图标按钮</div>
 								<div class="cols-6">
-									<div class="btn-group btn-label">
+									<!-- <div class="btn-group btn-label">
 									
 									<button class="btn btn-primary "><span class="btn-icon heart"></span></button>
 									<span class="btn label label-left-caret">liked!</span>					
-									</div>
+									</div> -->
+									<btn-label btnIcon="heart" labelText="liked!" caretAlign="left"></btn-label>
 								</div>
 							</div>
 						</div>
@@ -259,6 +310,9 @@
 	import rightNav from "./rightNav.vue";
 	import xtitle from "./directives/xtitle.vue";
 	import introTmpl  from "./templates/introTmpl.vue";
+	import buttonTmpl from "./templates/buttonTmpl.vue";
+	import btnGrpTmpl from "./templates/btnGrpTmpl.vue";
+	import btnLabelTmpl from "./templates/btnLabelTmpl.vue";
 	// let details = {
 	// 	componentName:"按钮",
 	// 	detailList:[]
@@ -274,7 +328,10 @@
 		},
 		components:{
 			"rightNav":rightNav,
-			"introTmpl":introTmpl
+			"introTmpl":introTmpl,
+			"btnTmpl":buttonTmpl,
+			"btnGroup":btnGrpTmpl,
+			"btnLabel":btnLabelTmpl
 		},
 		directives:{
 			"xtitle":xtitle

@@ -25,13 +25,18 @@
 		position: absolute;
 		z-index:1;
 		top:100%;
-		color:$product-color-blue;
+		color:$color-label;
 		
 		.menu-item{
-			background-color:#eee;
+			background-color:#fff;
 			width: 100%;	
+
+		}
+		.item-name{
+			background-color:$bg-color-blue;
 			&:hover{
-				background-color:#ddd;
+				color:$product-color-blue;
+				background-color:opacify($bg-color-blue,0.2);
 			}
 		}
 	}
@@ -53,6 +58,7 @@
 .menu-list-group{
 	color:$color-font;
 	border:solid 1px $color-line-rule;
+	box-shadow:0 1px 3px $color-line-rule;	
 	.menu-item{
 		background-color:#fff;
 		position: static;
@@ -74,8 +80,6 @@
 				top:$space-base;
 				bottom:$space-base;
 			}
-		}
-		.menu-item{
 			line-height: $line-height-sm;
 			font-size:$font-size-sm;
 			background:none;
