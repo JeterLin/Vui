@@ -31,13 +31,13 @@
 								<div class="row">
 									<div class="cols-4">浮动</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-primary btn-hover">Primary</button> -->
+										
 										<btn-tmpl btnType="btn-primary" btnState="btn-hover">
 											Primary
 										</btn-tmpl>
 									</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-secondary btn-hover">Secondary</button> -->
+										
 										<btn-tmpl btnType="btn-secondary" btnState="btn-hover">
 											Secondary
 										</btn-tmpl>
@@ -46,13 +46,13 @@
 								<div class="row">
 									<div class="cols-4">获取焦点</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-primary btn-focus">Primary</button> -->
+										
 										<btn-tmpl btnType="btn-primary" btnState="btn-focus">
 											Primary
 										</btn-tmpl>
 									</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-secondary btn-focus">Secondary</button> -->
+										
 										<btn-tmpl btnType="btn-secondary" btnState="btn-focus">
 											Secondary
 										</btn-tmpl>
@@ -61,39 +61,33 @@
 								<div class="row">
 									<div class="cols-4">激活</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-primary btn-active">Primary</button>  -->
+										
 										<btn-tmpl btnType="btn-primary" btnState="btn-active">Primary</btn-tmpl>
 									</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-secondary btn-active">Secondary</button> -->
+										
 										<btn-tmpl btnType="btn-secondary" btnState="btn-active">Secondary</btn-tmpl>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cols-4">禁用</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-primary btn-disable">Primary</button> -->
+										
 										<btn-tmpl btnType="btn-primary" btnState="btn-disable">Primary</btn-tmpl>
 									</div>
 									<div class="cols-4">
-										<!-- <button class="btn btn-secondary btn-disable">Secondary</button> -->
+										
 										<btn-tmpl btnType="btn-secondary" btnState="btn-disable">Secondary</btn-tmpl>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cols-4">带转动图标</div>
 									<div class="cols-4">
-									<!-- 	 <button class="btn btn-primary ">
-										 	Primary<span class="btn-icon spinner"></span>
-										 </button> -->
 										 <btn-tmpl btnType="btn-primary" :btnIcon="{iconName:'spinner',aniType:'spin'}">
 										 	Primary
 										 </btn-tmpl>
 									 </div>
 									<div class="cols-4">
-										<!--<button class="btn btn-secondary ">
-											Secondary<span class="btn-icon spinner spin"></span>
-										</button> -->
 										<btn-tmpl btnType="btn-secondary" :btnIcon="{iconName:'spinner',aniType:'spin'}">
 											Secondary
 										</btn-tmpl>
@@ -108,22 +102,22 @@
 							<div class="row">
 								<div class="cols-4">图标按钮</div>
 								<div class="cols-4">
-									<!-- <button class="btn btn-primary "><span class="btn-icon cart"></span></button> -->
+									
 									<btn-tmpl btnType="btn-primary" btnIcon="cart"></btn-tmpl>
 								</div>
 								<div class="cols-4">
-									<!-- <button class="btn btn-secondary btn-icon"><span class="btn-icon cart"></span></button> -->
+									
 									<btn-tmpl btnType="btn-secondary" btnIcon="cart"></btn-tmpl>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-4">圆形按钮</div>
 								<div class="cols-4">
-									<!-- <button class="btn btn-primary  btn-circle"><span class="btn-icon cart"></span></button> -->
+									
 									<btn-tmpl :btnType="['btn-primary','btn-circle']" btnIcon="cart"></btn-tmpl>
 								</div>
 								<div class="cols-4">
-									<!-- <button class="btn btn-secondary btn-circle"><span class="btn-icon cart"></span></button> -->
+									
 									<btn-tmpl :btnType="['btn-secondary','btn-circle']" btnIcon="cart"></btn-tmpl>
 								</div>
 							</div>
@@ -154,32 +148,18 @@
 							<div class="row">
 								<div class="cols-6">右标签</div>
 								<div class="cols-6">
-							<!-- 		<div class="btn-group btn-label">
-										<button class="btn btn-primary "><span class="btn-icon cart"></span>Cart</button>
-										<span class="btn label">shopped!</span>
-									</div> -->
 								<btn-label btnIcon="cart" btnText="Cart" labelText="shopped!"></btn-label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-6">左标签</div>
 								<div class="cols-6">
-									<!-- <div class="btn-group btn-label">
-									<span class="btn label label-right-caret">shopped!</span>
-									<button class="btn btn-primary"><span class="btn-icon cart"></span>Cart</button>
-									</div> -->
-
 									<btn-label btnIcon="cart" btnText="Cart" labelText="shopped!" caretAlign="right" ></btn-label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-6">标签化图标按钮</div>
 								<div class="cols-6">
-									<!-- <div class="btn-group btn-label">
-									
-									<button class="btn btn-primary "><span class="btn-icon heart"></span></button>
-									<span class="btn label label-left-caret">liked!</span>					
-									</div> -->
 									<btn-label btnIcon="heart" labelText="liked!" caretAlign="left"></btn-label>
 								</div>
 							</div>
@@ -193,13 +173,15 @@
 							<div class="row">
 								<div class="cols-6">默认大小</div>
 								<div class="cols-6">
-									<button class="btn btn-primary">Primary</button>
+									<!-- <button class="btn btn-primary">Primary</button> -->
+									<btn-tmpl btnType="btn-primary">Primary</btn-tmpl>
 								</div>
 							</div>
 							<div class="row">
 								<div class="cols-6">大按钮</div>
 								<div class="cols-6">
-									<button class="btn btn-primary btn-large">Create Campaign</button>
+									<!-- <button class="btn btn-primary btn-large">Create Campaign</button> -->
+									<btn-tmpl :btnType="['btn-primary','btn-large']">Create Campaign</btn-tmpl>
 								</div>
 							</div>
 						</div>
@@ -212,16 +194,7 @@
 							<div class="row">
 								<div class="cols-6">默认</div>
 								<div class="cols-6">
-									<div class="btn-group btn-dropdown">
-										<button class="btn btn-primary">Primary</button>
-										<button class="btn btn-primary" @click="isDrop=!isDrop">
-											<span class="dropdown-caret"></span>
-										</button>
-										<ul class="dropdown-list" v-show="isDrop" >
-											<li>list item 1</li>
-											<li>list item 2</li>
-										</ul>
-									</div>
+									<btn-dropdown btnText="Primary"></btn-dropdown>
 								</div>
 							</div>
 						</div>
@@ -234,26 +207,29 @@
 						<div class="container" @click.prevent="">
 							<div class="row">
 								<div class="cols-6">默认</div>
-								<div class="cols-6"><a href="" class="btn btn-link" >Secondary</a></div>
+								<div class="cols-6">
+									<!-- <a href="" class="btn btn-link" >Secondary</a> -->
+									<btn-link btnText="Secondary"></btn-link>
+								</div>
 							</div>
 							<div class="row">
 								<div class="cols-6">按钮组</div>
 								<div class="cols-6" >
-									<div class="btn-group">
-										<a href="" class="btn btn-link">Button</a>
-										<a href="" class="btn btn-link">Button</a>
-										<a href="" class="btn btn-link">Button</a>
-									</div>
-									<div class="btn-group">
-										<a href="" class="btn btn-link">Button</a>
-										<a href="" class="btn btn-link">Button</a>
-										<a href="" class="btn btn-link">Button</a>
-									</div>
-									<div class="btn-group">
-										<a href="" class="btn btn-link">Button</a>
-										<a href="" class="btn btn-link">Button</a>
-										<a href="" class="btn btn-link">Button</a>
-									</div>
+									<btn-group>
+										<btn-link btnText="Button"></btn-link>
+										<btn-link btnText="Button"></btn-link>
+										<btn-link btnText="Button"></btn-link>
+									</btn-group>
+									<btn-group>
+										<btn-link btnText="Button"></btn-link>
+										<btn-link btnText="Button"></btn-link>
+										<btn-link btnText="Button"></btn-link>
+									</btn-group>
+									<btn-group>
+										<btn-link btnText="Button"></btn-link>
+										<btn-link btnText="Button"></btn-link>
+										<btn-link btnText="Button"></btn-link>
+									</btn-group>
 								</div>
 							</div>
 						</div>
@@ -264,32 +240,17 @@
 								<div class="row">
 									<div class="cols-6" >默认</div>
 									<div class="cols-6">
-										<a href="" class="btn btn-link btn-link-large">
-											<span class="btn-header btn-icon cart"></span>
-											<span class="btn-header-name">Cart Abandoners</span>
-											<span class="btn-body">Choose if you want to spend ads to people who didn't finish buying</span>
-										</a>
+										<btn-link btnType="large" :btnText="{header:'Cart Abandoners',body:'Choose if you want to spend ads to people who didn\'t finish buying'}" btnIcon="cart"></btn-link>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cols-3" style="padding-left:0;text-align:center">按钮组</div>
 									<div class="cols-9">
 										<div class="btn-group">
-											<a href="" class="btn btn-link btn-link-large">
-												<span class ="btn-header btn-icon cart"></span>
-												<span class ="btn-header-name">Cart Abandoners</span>
-												<span class ="btn-body">Choose if you want to spend ads to people who didn't finish buying</span>
-											</a>
-											<a href="" class="btn btn-link btn-link-large">
-												<span class ="btn-header btn-icon cart"></span>
-												<span class ="btn-header-name">Cart Abandoners</span>
-												<span class ="btn-body">Choose if you want to spend ads to people who didn't finish buying</span>
-											</a>
-											<a href="" class="btn btn-link btn-link-large">
-												<span class ="btn-header btn-icon cart"></span>
-												<span class ="btn-header-name">Cart Abandoners</span>
-												<span class ="btn-body">Choose if you want to spend ads to people who didn't finish buying</span>
-											</a>
+
+											<btn-link btnType="large" :btnText="{header:'Cart Abandoners',body:'Choose if you want to spend ads to people who didn\'t finish buying'}" btnIcon="cart"></btn-link>
+											<btn-link btnType="large" :btnText="{header:'Cart Abandoners',body:'Choose if you want to spend ads to people who didn\'t finish buying'}" btnIcon="cart"></btn-link>
+											<btn-link btnType="large" :btnText="{header:'Cart Abandoners',body:'Choose if you want to spend ads to people who didn\'t finish buying'}" btnIcon="cart"></btn-link>
 										</div>
 									</div>
 								</div>
@@ -313,10 +274,8 @@
 	import buttonTmpl from "./templates/buttonTmpl.vue";
 	import btnGrpTmpl from "./templates/btnGrpTmpl.vue";
 	import btnLabelTmpl from "./templates/btnLabelTmpl.vue";
-	// let details = {
-	// 	componentName:"按钮",
-	// 	detailList:[]
-	// };
+	import btnDropdownTmpl from "./templates/btnDropdownTmpl.vue";
+	import btnLinkTmpl from "./templates/btnLinkTmpl.vue";
 	let details = new introTmpl.Details("按钮");
 	introTmpl.extractTitles(details,xtitle);
 	export default {
@@ -331,7 +290,9 @@
 			"introTmpl":introTmpl,
 			"btnTmpl":buttonTmpl,
 			"btnGroup":btnGrpTmpl,
-			"btnLabel":btnLabelTmpl
+			"btnLabel":btnLabelTmpl,
+			"btnDropdown":btnDropdownTmpl,
+			"btnLink":btnLinkTmpl
 		},
 		directives:{
 			"xtitle":xtitle

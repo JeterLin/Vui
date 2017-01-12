@@ -4,19 +4,16 @@
 			<span v-if="btnIcon !=='defaultVal' " class="btn-icon" :class="getClassName('icon')"></span>
 			<slot name="afterIcon"></slot>
 </button>
- <!-- <component :is="buttonType" :config="childComponentConfig"><slot></slot></component> -->
 </template>
 
 <script >
-	// import singleBtnTmpl from './singleBtnTmpl.vue';
-	// import btnGrpTmpl from './btnGrpTmpl.vue';
 	let classMap = {
 		// button types
 		'btn-primary':'btn-primary',
 		'btn-secondary':'btn-secondary',
 		'btn-circle':'btn-circle',
-		// 'btn-group':'btn-group',
-		// 'btn-label':'btn-label',
+		'btn-large':'btn-large',
+		'btn-dropdown':'',
 		// icons
 		'spinner':'spinner',
 		'cart':'cart',
@@ -82,12 +79,6 @@
 						}
 					}	
 					break;
-					// case 'label':
-					// 	this.btnType==='btn-label'    ? 
-					// 	(resultList = [
-					// 	classMap[this.btnType]]) : 
-					// 	(resultList=[]);
-					// break;
 					default:
 					break;
 				}
@@ -98,52 +89,9 @@
 	export default {
 		data(){
 			return {
-				// childComponentConfig:{},
-				// buttonType:'singleBtnTmpl'
 			};
 		},
-		// created(){
-			
-		// 	let childComponentConfig = {};
-		// 	// when child component is singleBtnTmpl
-		// 	if(Array.isArray(this.btnType) || 
-		// 		this.btnType === 'btn-primary' || 
-		// 		this.btnType === 'btn-secondary' || 
-		// 		this.btnType === 'btn-circle' ){
-		// 		this.buttonType = 'singleBtnTmpl';
-		// 		let iconClassList = this.getClassName('icon');
-		// 		childComponentConfig = {
-		// 			buttonClassNames:this.getClassName('button'),
-		// 			iconConfig:{
-		// 				enable:iconClassList.length > 0,
-		// 				classNames:iconClassList
-		// 			}
-		// 		};
-		// 	}
-		// 	else if(this.btnType === 'btn-group' ||
-		// 			this.btnType === 'btn-label'){
-		// 		// when child component is btnGrpTmpl
-		// 		this.buttonType = 'btnGrpTmpl';
-		// 		childComponentConfig = {
-		// 			groupType:classMap[this.btnType],
-		// 			labelClassNames:this.getClassName('label')
-		// 		};
-		// 	}
-
-		// 	this.childComponentConfig = childComponentConfig;
-		// },
 		props:props,
 		methods:methods
-		// ,
-		// components:{
-		// 	'singleBtnTmpl':singleBtnTmpl,
-		// 	'btnGrpTmpl':btnGrpTmpl
-		// }
 	};
 </script>
-<style lang="scss">
-	// $fa-font-path:"../../assets/fonts/font-awesome";
-	// @import "../style/font-awesome/font-awesome";
-	// @import "../style/common";
-	// @import "../style/button";
-</style>
