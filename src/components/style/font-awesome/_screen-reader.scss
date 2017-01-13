@@ -1,5 +1,11 @@
 // Screen Readers
 // -------------------------
-
+$screen-reader-compile-once:false !default;
+@mixin make-sreen-reader(){
 .sr-only { @include sr-only(); }
 .sr-only-focusable { @include sr-only-focusable(); }
+}
+@if $screen-reader-compile-once == false {
+	@include make-sreen-reader;
+}
+$screen-reader-compile-once:true ;

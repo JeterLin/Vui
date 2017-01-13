@@ -1,7 +1,9 @@
 $btn-radius:2px !default;
 $btn-border-width:1px !default;
 $caret-size:8px !default;
-$btn-lin-large-width:180px !default;
+$btn-link-large-width:180px !default;
+$button-compile-once:false !default;
+@mixin make-button-style(){
 button{
 	border:none;
 	font-family:$font-family-sans-serif ;
@@ -60,54 +62,6 @@ button{
 		box-shadow:inset 0 0 $space-sm darken($product-color-blue,10%);
 		background:linear-gradient(to bottom,darken($product-color-blue,10%) ,$product-color-blue $space-sm , $product-color-blue);
 	}
-}
-.btn-icon{
-	@extend %#{$fa-css-prefix};
-}
-.spinner{
-	
-	padding-left:$space-sm;
-	&:before { content: $fa-var-spinner; }
-	&.spin{
-		&:before{
-			display: inline-block;
-			@extend .#{$fa-css-prefix}-spin;
-		}
-		
-	}
-}
-
-
-.cart {
-
-	&:before{
-		content:$fa-var-shopping-cart;
-	}
-}
-.align-left{
-	&:before{
-		content:$fa-var-align-left;
-	}
-}
-.align-right{
-	&:before{
-		content: $fa-var-align-right;
-	}
-}
-.align-center{
-	&:before{
-		content:$fa-var-align-center;
-	}
-}
-.align-justify{
-	&:before{
-		content:$fa-var-align-justify;
-	}
-}
-.heart{
-	&:before {
-	 content: $fa-var-heart; 
-	 }
 }
 
 .btn-group{
@@ -191,42 +145,6 @@ button{
 	padding-right:$space-lg;
 }
 
-.btn-dropdown{
-	display:table;
-	position: relative;
-	.btn:last-of-type{
-		margin-left:$space-sm / 3;
-		// padding :$space-sm;
-		padding:$space-base $space-normal;
-	}
-	.dropdown-caret{
-
-		@include draw-caret('down',$caret-size / 2);
-		&:after{
-			@include center-horizontal(null);
-			border-top-color:#fff;
-			$caret-padding:($font-size-base - $caret-size / 2) / 2;
-			margin-top:$caret-padding;
-			margin-bottom: $caret-padding;
-		}
-	}
-	
-	.dropdown-list{
-		$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;
-		@include make-droplist-layout;
-		margin-top:$droplist-padding;
-		border:solid 1px $color-line-rule;
-		border-radius:$btn-radius;
-		right: 0;
-		box-shadow:0 $space-sm / 2 $space-sm  $color-line-rule;
-		li{
-
-			&:hover{
-				background-color:$bg-color-blue;
-			}
-		}
-	}
-}
 
 .btn-link{
 	display:block;
@@ -257,7 +175,7 @@ button{
 
 .btn-link-large{
 
-	width:$btn-lin-large-width;
+	width:$btn-link-large-width;
 	padding-left:$space-normal;
 	padding-right:$space-normal;
 	[class^="btn-"]{
@@ -283,3 +201,8 @@ button{
 		color:$color-label;
 	}
 }
+}
+@if $button-compile-once == false {
+	@include make-button-style;
+}
+$button-compile-once:true;

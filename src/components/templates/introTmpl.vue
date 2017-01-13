@@ -56,7 +56,7 @@
 	}
 </script>
 <style lang="scss">
-	@import "../style/mixin";
-	@import "../style/common";
-	@import "../style/detail-intro";
+	// @import "../style/mixin";
+	// @import "../style/common";
+	
 </style>

@@ -3,7 +3,7 @@
 		<div slot="in-body">
 			<header>
 				<h1 class="title">菜单</h1>
-				<p class="main-intro">菜单主要用于将信息信息概括，分级组织。菜单一般使用<code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>和<code>&lt;li&gt;</code>这些元素来显示内容的组织层级结构。菜单与子菜单之间的展示位置的控制，则可以利用相对定位和绝对定位来设置控制。考虑到菜单的组织层级结构的复杂性，这里只展示二级菜单，如果需要更多层级结构的菜单展开，需要进一步改写代码，以满足用户的需求。</p>
+				<p class="main-intro">菜单主要用于概括、分级组织信息。菜单一般使用<code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>和<code>&lt;li&gt;</code>这些元素来显示内容的组织层级结构。菜单与子菜单之间的展示位置的控制，则可以利用相对定位和绝对定位来设置控制。考虑到菜单的组织层级结构的复杂性，这里只展示二级菜单，如果需要更多层级结构的菜单展开，需要进一步改写代码，以满足用户的需求。</p>
 			</header>
 			<div class="detail">
 				<section>
@@ -43,6 +43,12 @@
 						<h2 class="sub-title" v-xtitle:rank="1">下拉菜单</h2>
 						<div class="container">
 							<div class="row">
+								<div class="cols-3">默认</div>
+								<div class="cols-3">
+									<btn-dropdown btnText="All Types" caretAlign="right" btnType="btn-secondary"></btn-dropdown>
+								</div>
+								<div class="cols-3"></div>
+								<div class="cols-3"></div>
 							</div>
 						</div>
 					</section>
@@ -60,6 +66,7 @@
 	import rightNav from './rightNav.vue';
 	import xtitle from './directives/xtitle.vue';
 	import menuTmpl from './templates/menuTmpl.vue';
+	import btnDropdownTmpl from "./templates/btnDropdownTmpl.vue";
 
 	// default details constructor to collect and save titles in this page
 	let details = new introTmpl.Details("菜单");
@@ -86,7 +93,8 @@
 		components:{
 			'introTmpl':introTmpl,
 			'rightNav':rightNav,
-			'menuTmpl':menuTmpl
+			'menuTmpl':menuTmpl,
+			'btnDropdown':btnDropdownTmpl
 		},
 		directives:{
 			'xtitle':xtitle
@@ -94,3 +102,8 @@
 
 	};
 </script>
+<style lang="scss">
+	// @import "./style/common";
+	// @import "./style/button";
+
+</style>

@@ -1,3 +1,6 @@
+//set $detail-intro-compile-once `true` for generating unique css code 
+$detail-intro-compile-once:false !default;
+@mixin make-intro-style(){
 #intro{
 		p{
 			@include make-paragraph();
@@ -84,3 +87,8 @@
 		padding-left:$space-sm;
 		padding-right:$space-sm;
 	}
+}
+@if $detail-intro-compile-once == false {
+	@include make-intro-style;
+}
+$detail-intro-compile-once:true;

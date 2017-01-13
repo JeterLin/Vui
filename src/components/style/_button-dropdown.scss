@@ -1,0 +1,50 @@
+$caret-size:8px !default;
+$btn-radius:2px !default;
+$btn-dropdown-compile-once:false !default;
+@mixin make-btn-dropdown-style(){
+.btn-group.btn-dropdown{
+	display:table;
+	position: relative;
+	.btn{
+		border-right:solid 1px darken($product-color-blue,10%);
+	}
+	.btn:last-of-type{
+		// padding :$space-sm;
+		border-right:none;
+		padding:$space-base $space-normal;
+	}
+	.caret-down{
+
+		&.stick-right{
+			float:right;
+			padding-left:$caret-size / 2;
+		}
+		&.stick-left{
+			float:left;
+			padding-right:$caret-size / 2;
+		}
+	}	
+	.dropdown-list{
+		// ($font-size-base + $space-base * 2) calc for button height , first `2px` calc for button border width , second `2px` calc for extra space
+		$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;
+		@include make-droplist-layout;
+		margin-top:$droplist-padding;
+		border:solid 1px $color-line-rule;
+		border-radius:$btn-radius;
+		right: 0;
+		box-shadow:0 $space-sm / 2 $space-sm  $color-line-rule;
+		li{
+
+			&:hover{
+				background-color:$bg-color-blue;
+			}
+		}
+	}
+}
+
+
+}
+@if $btn-dropdown-compile-once == false {
+	@include make-btn-dropdown-style;
+}
+$btn-dropdown-compile-once:true;

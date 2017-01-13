@@ -1,6 +1,7 @@
 /* FONT PATH
  * -------------------------- */
-
+$path-compile-once:false !default;
+@mixin make-font-face(){
 @font-face {
   font-family: 'FontAwesome';
   src: url('#{$fa-font-path}/fontawesome-webfont.eot?v=#{$fa-version}');
@@ -13,3 +14,9 @@
   font-weight: normal;
   font-style: normal;
 }
+
+}
+@if $path-compile-once == false {
+	@include  make-font-face;
+}
+$path-compile-once:true;

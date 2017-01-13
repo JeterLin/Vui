@@ -9,7 +9,7 @@
 			</ul>
 		</li>
 	</ul>
-	
+
 </template>
 <script >
 	export default {
@@ -42,6 +42,13 @@
 			}
 				
 		},
+		computed:{
+			testProp:{
+				set(val){
+					console.info(val);
+				}
+			}
+		},
 		props:{
 			listModel:{
 				type:Array,
@@ -59,6 +66,5 @@
 	}
 </script>
 <style lang="scss">
-	@import '../style/common';
-	@import '../style/menus';
+	
 </style>

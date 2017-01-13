@@ -3,8 +3,3 @@
 </template>
 <script >
 </script>
-<style lang="scss">
-@import "./style/common";
-	#head-nav{
-	}
-</style>

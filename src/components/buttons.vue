@@ -194,7 +194,9 @@
 							<div class="row">
 								<div class="cols-6">默认</div>
 								<div class="cols-6">
-									<btn-dropdown btnText="Primary"></btn-dropdown>
+									<btn-dropdown >
+										<btn-tmpl btnType="btn-primary" >Primary</btn-tmpl>
+									</btn-dropdown>
 								</div>
 							</div>
 						</div>
@@ -300,7 +302,8 @@
 	}
 </script>
 <style lang="scss">
-	@import "./style/font-awesome/font-awesome";
-	@import "./style/common";
-	@import "./style/button";
+	// @import "./style/font-awesome/font-awesome";
+	// @import "./style/common";
+	// @import "./style/button-icon";
+	// @import "./style/button";
 </style>

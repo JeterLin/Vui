@@ -1,8 +1,9 @@
 <template>
 	<btn-group class="btn-dropdown">
-		<btn-tmpl btnType="btn-primary">{{btnText}}</btn-tmpl>
-		<btn-tmpl btnType="btn-primary" @click.native="isDrop=!isDrop">
-			<span class="dropdown-caret"></span>
+		<slot></slot>
+		<btn-tmpl :btnType="btnType" @click.native="isDrop=!isDrop">
+			{{btnText}}
+			<span class="btn-icon caret-down" :class="caretAlign !='none' ? 'stick-'+caretAlign :'' " ></span>
 		</btn-tmpl>
 		<component :is="dropdownListType" v-show="isDrop"></component>
 	</btn-group>	
@@ -30,7 +31,27 @@
 			dropdownListType:{
 				type:String,
 				default:'default'
+			},
+			btnType:{
+				type:String,
+				default:'btn-primary'
+			},
+			caretAlign:{
+				type:String,
+				default:'none',
+				validator(value){
+					return ['left','right','none'].includes(value);
+				}
 			}
 		}
 	};
 </script>
+
+<style lang="scss">
+	// $fa-font-path:"../../assets/fonts/font-awesome" ;
+	// @import "../style/font-awesome/font-awesome";
+	// @import "../style/common";
+	// @import "../style/button-icon";
+	// @import "../style/button-dropdown";
+	
+</style>

@@ -1,0 +1,61 @@
+$button-icon-compile-once:false !default;
+@mixin make-btn-icon{
+.btn-icon{
+	@extend %#{$fa-css-prefix};
+}
+.spinner{
+	
+	padding-left:$space-sm;
+	&:before { content: $fa-var-spinner; }
+	&.spin{
+		&:before{
+			display: inline-block;
+			@extend .#{$fa-css-prefix}-spin;
+		}
+		
+	}
+}
+
+
+.cart {
+
+	&:before{
+		content:$fa-var-shopping-cart;
+	}
+}
+.caret-down {
+	&:before {
+		content:$fa-var-caret-down;
+	}
+}
+.align-left{
+	&:before{
+		content:$fa-var-align-left;
+	}
+}
+.align-right{
+	&:before{
+		content: $fa-var-align-right;
+	}
+}
+.align-center{
+	&:before{
+		content:$fa-var-align-center;
+	}
+}
+.align-justify{
+	&:before{
+		content:$fa-var-align-justify;
+	}
+}
+.heart{
+	&:before {
+	 content: $fa-var-heart; 
+	 }
+}
+
+}
+@if $button-icon-compile-once == false {
+	@include make-btn-icon;
+}
+$button-icon-compile-once:true;
