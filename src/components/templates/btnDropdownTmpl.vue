@@ -3,9 +3,9 @@
 		<slot></slot>
 		<btn-tmpl :btnType="btnType" @click.native="isDrop=!isDrop" :btnState="isDrop ? 'btn-active':'' ">
 			{{text}}
-			<span class="btn-icon caret-down" :class="caretAlign !='none' ? 'stick-'+caretAlign :'' " ></span>
+			<span class="btn-icon " :class="getBtnIconClassNames()" ></span>
 		</btn-tmpl>
-		<component :is="dropdownListType" v-show="isDrop" :listModel="listModel" :listAlign="listAlign">{{text}}</component>
+		<component :is="dropdownListType" v-show="isDrop" :btnType="btnType" :listModel="listModel" :listAlign="listAlign">{{text}}</component>
 	</btn-group>	
 </template>
 <script >
@@ -15,8 +15,31 @@
 	export default {
 		data(){
 			return {
-				isDrop:false
+				isDrop:false,
+				classMap:{
+					'caret':'caret-down',
+					'ellipsis':'ellipsis-h',
+					'iconLeft':'stick-left',
+					'iconRight':'stick-right',
+					'defaultVal':''
+				}
 			};
+		},
+		methods:{
+			getBtnIconClassNames(){
+				let iconAlign = 'defaultVal';
+				if(this.iconAlign == 'left'){
+					iconAlign = 'iconLeft';
+				}else if(this.iconAlign == 'right'){
+					iconAlign = 'iconRight';
+				}
+				let resultList = [
+					this.classMap[this.btnIcon],
+
+					this.classMap[iconAlign]
+				];
+				return resultList;
+			}
 		},
 		components:{
 			'btnTmpl':buttonTmpl,
@@ -36,7 +59,12 @@
 				type:[String,Array],
 				default:'btn-primary'
 			},
-			caretAlign:{
+			btnIcon:{
+				type:[String,Object],
+				default:'caret'
+			},
+			// align icon relative to text in the button 
+			iconAlign:{
 				type:String,
 				default:'none',
 				validator(value){

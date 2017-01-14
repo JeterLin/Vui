@@ -16,7 +16,11 @@ $btn-dropdown-compile-once:false !default;
 	.btn-secondary{
 		color:$color-label;
 	}
-	.caret-down{
+	.btn-secondary.btn-circle{
+		// overwrite rules in `.btn-group .btn:last-of-type` & `.btn-group .btn:first-of-type`
+		@include draw-circle($space-lg);
+	}
+	.btn-icon{
 
 		&.stick-right{
 			float:right;
@@ -27,9 +31,6 @@ $btn-dropdown-compile-once:false !default;
 			padding-right:$space-base;
 		}
 	}
-	// .btn-secondary:last-of-type{
-	// 	color:$color-label;
-	// }	
 	.dropdown-list{
 		// ($font-size-base + $space-base * 2) calc for button height , first `2px` calc for button border width , second `2px` calc for extra space
 		$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;

@@ -45,10 +45,13 @@
 							<div class="row">
 								<div class="cols-3">默认</div>
 								<div class="cols-3">
-									<btn-dropdown text="All Types" caretAlign="right" btnType="btn-secondary" :listModel="dropDownListModel" listAlign="left"></btn-dropdown>
+									<btn-dropdown text="All Types" iconAlign="right" btnType="btn-secondary" :listModel="dropDownListModel" listAlign="left"></btn-dropdown>
 								</div>
 								<div class="cols-3"></div>
-								<div class="cols-3"></div>
+								<div class="cols-3">
+									<btn-dropdown :btnType="['btn-secondary','btn-circle']" :listModel="smallListModel" listAlign="right" btnIcon="ellipsis" ></btn-dropdown>
+								</div>
+								
 							</div>
 						</div>
 					</section>
@@ -92,10 +95,16 @@
 				'Prospecting',
 				'Retargeting'
 			];
+			let smallListModel = [
+				'pause',
+				'edit',
+				'duplicate'
+			];
 			return {
 				details,
 				listModel,
-				dropDownListModel
+				dropDownListModel,
+				smallListModel
 			};
 		},
 		components:{
