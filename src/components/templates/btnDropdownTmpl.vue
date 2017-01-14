@@ -1,9 +1,11 @@
 <template>
-	<btn-group class="btn-dropdown">
+	<btn-group :class="getDropdownClassNames()">
 		<slot></slot>
-		<btn-tmpl :btnType="btnType" @click.native="isDrop=!isDrop" :btnState="isDrop ? 'btn-active':'' ">
-			{{text}}
-			<span class="btn-icon " :class="getBtnIconClassNames()" ></span>
+		<btn-tmpl :btnType="getBtnType()" @click.native="isDrop=!isDrop" :btnIcon="getBtnIconName()">
+			<span :slot="getBtnSlotName()">
+				<span class="drop-btn-text">{{text}}</span>
+				<span class="btn-icon " :class="getDropIconClassNames()" ></span>
+			</span>
 		</btn-tmpl>
 		<component :is="dropdownListType" v-show="isDrop" :btnType="btnType" :listModel="listModel" :listAlign="listAlign">{{text}}</component>
 	</btn-group>	
@@ -17,26 +19,68 @@
 			return {
 				isDrop:false,
 				classMap:{
+					// the key part below is values of dropIcon
 					'caret':'caret-down',
 					'ellipsis':'ellipsis-h',
-					'iconLeft':'stick-left',
-					'iconRight':'stick-right',
+					// values of checkIcon
+					'plus':'plus',
+					'check':'check',
+					'minus':'minus',
+					'square':'square',
+					// the key part below is values of dropIconAlign
+					'drop-icon-left':'stick-left',
+					'drop-icon-right':'stick-right',
+
 					'defaultVal':''
 				}
 			};
 		},
 		methods:{
-			getBtnIconClassNames(){
-				let iconAlign = 'defaultVal';
-				if(this.iconAlign == 'left'){
-					iconAlign = 'iconLeft';
-				}else if(this.iconAlign == 'right'){
-					iconAlign = 'iconRight';
+			getBtnType(){
+				if(typeof this.btnType==='string'){
+					return ['btn-dropdown',this.btnType];
+				}else if(Array.isArray(this.btnType)){
+					return [...this.btnType,'btn-dropdown'];
+				}
+
+			},
+			log(text){
+				console.info(text);
+			},
+			getDropdownClassNames(){
+				if(Array.isArray(this.btnType) &&
+					this.btnType.includes('btn-circle')){
+					return 'circle-btn-dropdown';
+				}
+				if(Array.isArray(this.btnType) &&
+					this.btnType.includes('btn-multi') ){
+					return 'multi-dropdown';
+				}
+				return 'btn-dropdown';
+			},
+			getBtnIconName(){
+				if(['plus','minus','check'].includes(this.checkIcon)){
+					return this.classMap[this.checkIcon];
+				}
+				return 'defaultVal';
+			},
+			getBtnSlotName(){
+				if(['plus','check','minus'].includes(this.checkIcon)){
+					return 'afterIcon';
+				}
+				return '';
+			},
+			getDropIconClassNames(){
+				let dropIconAlign= 'defaultVal';
+				if(this.dropIconAlign== 'left'){
+					dropIconAlign = 'drop-icon-left';
+				}else if(this.dropIconAlign == 'right'){
+					dropIconAlign = 'drop-icon-right';
 				}
 				let resultList = [
-					this.classMap[this.btnIcon],
+					this.classMap[this.dropIcon],
 
-					this.classMap[iconAlign]
+					this.classMap[dropIconAlign]
 				];
 				return resultList;
 			}
@@ -59,12 +103,16 @@
 				type:[String,Array],
 				default:'btn-primary'
 			},
-			btnIcon:{
+			checkIcon:{
+				type:String,
+				default:'defaultVal'
+			},
+			dropIcon:{
 				type:[String,Object],
 				default:'caret'
 			},
 			// align icon relative to text in the button 
-			iconAlign:{
+			dropIconAlign:{
 				type:String,
 				default:'none',
 				validator(value){

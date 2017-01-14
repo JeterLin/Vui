@@ -42,17 +42,32 @@
 					<section>
 						<h2 class="sub-title" v-xtitle:rank="1">下拉菜单</h2>
 						<div class="container">
-							<div class="row">
-								<div class="cols-3">默认</div>
+							<div class="row" :style="getZIndex()">
+								<div class="cols-2">默认</div>
 								<div class="cols-3">
-									<btn-dropdown text="All Types" iconAlign="right" btnType="btn-secondary" :listModel="dropDownListModel" listAlign="left"></btn-dropdown>
+									<btn-dropdown text="All Types" dropIconAlign="right" btnType="btn-secondary" :listModel="dropDownListModel" listAlign="left"></btn-dropdown>
 								</div>
 								<div class="cols-3"></div>
 								<div class="cols-3">
-									<btn-dropdown :btnType="['btn-secondary','btn-circle']" :listModel="smallListModel" listAlign="right" btnIcon="ellipsis" ></btn-dropdown>
+									<btn-dropdown :btnType="['btn-secondary','btn-circle']" :listModel="smallListModel"  dropIcon="ellipsis" ></btn-dropdown>
 								</div>
 								
 							</div>
+							<div class="row" :style="getZIndex()">
+								<div class="cols-2">
+									多选下拉菜单
+								</div>
+								<div class="cols-5">
+									<btn-dropdown :btnType="['btn-secondary','btn-multi']" :listModel="msListModel.data" checkIcon="check" :text="msListModel.buttonText" listAlign="left" ></btn-dropdown>
+								</div>
+								<div class="cols-5"></div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2 class="sub-title" v-xtitle:rank="1">折叠菜单</h2>
+						<div class="container">
+							<div class="row"></div>
 						</div>
 					</section>
 				</section>
@@ -100,12 +115,35 @@
 				'edit',
 				'duplicate'
 			];
+			// multi select list data model 
+			let msListModel={
+				buttonText:"All Placements",
+				data:[
+					{
+					checked:false,
+					itemHead:'',
+					itemBody:''
+					}
+				]
+			};
 			return {
 				details,
 				listModel,
 				dropDownListModel,
-				smallListModel
+				smallListModel,
+				msListModel
 			};
+		},
+		methods:{
+			getZIndex:function(){
+				let zidx =1e3;
+				return ()=>{
+					return {
+						position:'relative',
+						zIndex:zidx--
+					}
+				}
+			}()
 		},
 		components:{
 			'introTmpl':introTmpl,

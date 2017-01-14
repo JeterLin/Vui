@@ -1,5 +1,5 @@
 <template>
-<ul class="dropdown-list" :style="getListStyle()"  >
+<ul class="default-dropdown-list" :style="getListStyle()"  >
 	<li v-if="isSlotExist"><slot></slot></li>
 	<li v-for="item in listModel" :key="keyid(item)">{{item}}</li>
 </ul>	

@@ -3,6 +3,13 @@ $button-icon-compile-once:false !default;
 .btn-icon{
 	@extend %#{$fa-css-prefix};
 }
+// icon state
+.btn-icon.icon-active{
+	color:$product-color-blue;
+}
+.btn-icon.icon-disable{
+	color:$color-line-rule;
+}
 .spinner{
 	
 	padding-left:$space-sm;
@@ -31,6 +38,26 @@ $button-icon-compile-once:false !default;
 .ellipsis-h{
 	&:before{
 		content:$fa-var-ellipsis-h;
+	}
+}
+.plus {
+	&:before{
+		content:$fa-var-plus;
+	}
+}
+.check-square{
+	&:before{
+		content: $fa-var-check-square;
+	}
+}
+.minus-square{
+	&:before{
+		content: $fa-var-minus-square;
+	}
+}
+.square-o{
+	&:before{
+		content: $fa-var-square-o;
 	}
 }
 .align-left{

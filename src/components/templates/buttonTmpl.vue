@@ -1,20 +1,21 @@
 <template>
-<button class="btn" :class="getClassName('button')">
-			<slot></slot>
-			<span v-if="btnIcon !=='defaultVal' " class="btn-icon" :class="getClassName('icon')"></span>
-			<slot name="afterIcon"></slot>
+<button class="btn" :class="buttonClassNames" @click="onClickButton">
+	<slot></slot>
+	<span v-if="btnIcon !=='defaultVal' " class="btn-icon" :class="iconClassNames" @click="onClickIcon"></span>
+	<slot name="afterIcon"></slot>
 </button>
 </template>
 
 <script >
 	let classMap = {
-		// button types
+		// the key part below is values of btnType
 		'btn-primary':'btn-primary',
 		'btn-secondary':'btn-secondary',
 		'btn-circle':'btn-circle',
 		'btn-large':'btn-large',
 		'btn-dropdown':'',
-		// icons
+		'btn-multi':'',
+		// values of btnIcon or btnIcon.iconName
 		'spinner':'spinner',
 		'cart':'cart',
 		'align-left':'align-left',
@@ -22,9 +23,13 @@
 		'align-center':'align-center',
 		'align-justify':'align-justify',
 		'heart':'heart',
-		// icon animation type
+		'plus':'plus',
+		'minus':'minus-square',
+		'check':'check-square',
+		'square':'square-o',
+		// values of btnIcon.aniType
 		'spin':'spin',
-		// button state
+		// values of btnState
 		'btn-hover':'btn-hover',
 		'btn-focus':'btn-focus',
 		'btn-active':'btn-active',
@@ -46,10 +51,55 @@
 				default:'defaultVal'
 			}
 	};
-	let methods = {
+	// let methods = 
+	export default {
+		data(){
+			return {
+				isClickButton:false,
+				isClickIcon:false,
+				buttonClassNames:[],
+				iconClassNames:[]
+			};
+		},
+		created(){
+			this.buttonClassNames = this.getClassName('button');
+			this.iconClassNames = this.getClassName('icon');
+		},
+		props:props,
+		methods:{
+			onClickButton(){
+				if(Array.isArray(this.btnType) &&
+					this.btnType.includes('btn-dropdown')){
+					this.isClickButton = !this.isClickButton;
+					if(this.isClickButton){
+						this.buttonClassNames.push(classMap['btn-active']);
+					}else {
+						this.buttonClassNames.pop();
+					}
+					this.buttonClassNames = this.buttonClassNames;
+				}
+			},
+			onClickIcon(){
+					this.isClickIcon = !this.isClickIcon;
+					if(this.isClickIcon){
+						this.iconClassNames = this.iconClassNames.map((className)=>{
+							// return 
+							if(className === classMap['square']){
+								return classMap[this.btnIcon];
+							}
+							return className;
+						});
+					}else {
+						this.iconClassNames = this.iconClassNames.map((className)=>{
+							if(className === classMap[this.btnIcon]){
+								return classMap['square'];
+							}
+							return className;
+						});
+					}
+			},
 			getClassName(componentType){
 				let resultList = [];
-				// console.info(this.btnIcon);
 				switch(componentType){
 					case 'button':
 					if(typeof this.btnType === 'string'){
@@ -69,6 +119,11 @@
 							resultList = [
 								classMap[this.btnIcon]
 							];
+							if(Array.isArray(this.btnType) &&
+								this.btnType.includes('btn-multi')){
+								resultList.pop();
+								resultList.push(classMap['square']);
+							}
 
 						}else if(typeof this.btnIcon === 'object'){
 
@@ -85,13 +140,6 @@
 				return resultList;
 			}
 		
-	};
-	export default {
-		data(){
-			return {
-			};
-		},
-		props:props,
-		methods:methods
+		}
 	};
 </script>

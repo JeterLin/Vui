@@ -2,7 +2,7 @@ $caret-size:8px !default;
 $btn-radius:2px !default;
 $btn-dropdown-compile-once:false !default;
 @mixin make-btn-dropdown-style(){
-.btn-group.btn-dropdown{
+%btn-dropdown{
 	display:table;
 	position: relative;
 	.btn-primary{
@@ -15,11 +15,10 @@ $btn-dropdown-compile-once:false !default;
 	}
 	.btn-secondary{
 		color:$color-label;
+		padding-left:$space-normal;
+		padding-right:$space-normal;
 	}
-	.btn-secondary.btn-circle{
-		// overwrite rules in `.btn-group .btn:last-of-type` & `.btn-group .btn:first-of-type`
-		@include draw-circle($space-lg);
-	}
+	
 	.btn-icon{
 
 		&.stick-right{
@@ -31,27 +30,71 @@ $btn-dropdown-compile-once:false !default;
 			padding-right:$space-base;
 		}
 	}
-	.dropdown-list{
-		// ($font-size-base + $space-base * 2) calc for button height , first `2px` calc for button border width , second `2px` calc for extra space
-		$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;
-		@include make-droplist-layout($space-md,$space-base);
-		margin-top:$droplist-padding;
-		border:solid 1px $color-line-rule;
-		border-radius:$btn-radius;
-		right: 0;
-		box-shadow:0 $space-sm / 2 $space-sm  $color-line-rule;
-		li{
 
-			&:hover{
-				background-color:$bg-color-blue;
-			}
+
+}
+.btn-dropdown{
+	@extend %btn-dropdown;
+}
+.circle-btn-dropdown{
+	@extend %btn-dropdown;
+	.btn-secondary.btn-circle{
+		// overwrite rules in `.btn-group .btn:last-of-type` & `.btn-group .btn:first-of-type`
+		@include draw-circle($space-lg);
+		// overwrite rules in `%btn-dropdown .btn-secondary`
+		padding:0;
+	}
+}
+.multi-dropdown{
+	@extend %btn-dropdown;
+	$icon-size:20px;
+	.plus,.check-square,.minus-square,.square-o{
+		font-size:$icon-size;
+	}
+	.btn-active{
+		.plus,.check-square,.minus-square{
+			color:$product-color-blue;
+		}
+	}
+	.drop-btn-text{
+		padding-left:$space-sm;
+		padding-right:$space-sm;
+	}
+	.btn-secondary>span{
+		vertical-align: middle;
+	}
+}
+// default dropdown list
+%dropdown-list{
+	// ($font-size-base + $space-base * 2) calc for button height , first `2px` calc for button border width , second `2px` calc for extra space
+	$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;
+	@include make-droplist-layout($space-md,$space-base);
+	z-index:1;
+	right: 0;
+	background-color:#fff;
+	margin-top:$droplist-padding;
+	border:solid 1px $color-line-rule;
+	border-radius:$btn-radius;
+	
+	box-shadow:0 $space-sm / 2 $space-sm  $color-line-rule;
+
+	
+}
+.default-dropdown-list{
+	@extend %dropdown-list;
+	li{
+		&:hover{
+			background-color:$bg-color-blue;
 		}
 	}
 }
-
+.multi-dropdown-list{
+	@extend %dropdown-list;
+}
 
 }
 @if $btn-dropdown-compile-once == false {
 	@include make-btn-dropdown-style;
 }
 $btn-dropdown-compile-once:true;
+
