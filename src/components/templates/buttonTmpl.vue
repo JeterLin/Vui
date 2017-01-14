@@ -29,6 +29,8 @@
 		'square':'square-o',
 		// values of btnIcon.aniType
 		'spin':'spin',
+		// values of iconState
+		'icon-active':'icon-active',
 		// values of btnState
 		'btn-hover':'btn-hover',
 		'btn-focus':'btn-focus',
@@ -81,22 +83,26 @@
 			},
 			onClickIcon(){
 					this.isClickIcon = !this.isClickIcon;
+					let resultList = [];
 					if(this.isClickIcon){
-						this.iconClassNames = this.iconClassNames.map((className)=>{
+					   resultList = this.iconClassNames.map((className)=>{
 							// return 
 							if(className === classMap['square']){
 								return classMap[this.btnIcon];
 							}
 							return className;
 						});
+					   resultList.push(classMap['icon-active']);
 					}else {
-						this.iconClassNames = this.iconClassNames.map((className)=>{
+						this.iconClassNames.pop();
+					    resultList = this.iconClassNames.map((className)=>{
 							if(className === classMap[this.btnIcon]){
 								return classMap['square'];
 							}
 							return className;
 						});
 					}
+					this.iconClassNames = resultList ;
 			},
 			getClassName(componentType){
 				let resultList = [];
