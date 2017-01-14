@@ -35,11 +35,11 @@ export default {
   @import "./style/normalize";
   @import "./style/common";
   @import './style/mixin';
+  @import "./style/detail-intro";
   @import "./style/button-icon";
   @import "./style/button";
   @import "./style/button-dropdown";
   @import './style/menus';
-  @import "./style/detail-intro";
 
   body{
       font-family:$font-family-sans-serif;

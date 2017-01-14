@@ -45,7 +45,7 @@
 							<div class="row">
 								<div class="cols-3">默认</div>
 								<div class="cols-3">
-									<btn-dropdown btnText="All Types" caretAlign="right" btnType="btn-secondary"></btn-dropdown>
+									<btn-dropdown text="All Types" caretAlign="right" btnType="btn-secondary" :listModel="dropDownListModel" listAlign="left"></btn-dropdown>
 								</div>
 								<div class="cols-3"></div>
 								<div class="cols-3"></div>
@@ -85,9 +85,17 @@
 				}
 			}
 			listModel.push({itemName:'item'});
+			let dropDownListModel = [
+				'General web',
+				'Facebook',
+				'Instagram',
+				'Prospecting',
+				'Retargeting'
+			];
 			return {
-				details:details,
-				listModel:listModel
+				details,
+				listModel,
+				dropDownListModel
 			};
 		},
 		components:{

@@ -5,29 +5,35 @@ $btn-dropdown-compile-once:false !default;
 .btn-group.btn-dropdown{
 	display:table;
 	position: relative;
-	.btn{
+	.btn-primary{
 		border-right:solid 1px darken($product-color-blue,10%);
 	}
-	.btn:last-of-type{
+	.btn-primary:last-of-type{
 		// padding :$space-sm;
 		border-right:none;
 		padding:$space-base $space-normal;
+	}
+	.btn-secondary{
+		color:$color-label;
 	}
 	.caret-down{
 
 		&.stick-right{
 			float:right;
-			padding-left:$caret-size / 2;
+			padding-left:$space-base;
 		}
 		&.stick-left{
 			float:left;
-			padding-right:$caret-size / 2;
+			padding-right:$space-base;
 		}
-	}	
+	}
+	// .btn-secondary:last-of-type{
+	// 	color:$color-label;
+	// }	
 	.dropdown-list{
 		// ($font-size-base + $space-base * 2) calc for button height , first `2px` calc for button border width , second `2px` calc for extra space
 		$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;
-		@include make-droplist-layout;
+		@include make-droplist-layout($space-md,$space-base);
 		margin-top:$droplist-padding;
 		border:solid 1px $color-line-rule;
 		border-radius:$btn-radius;

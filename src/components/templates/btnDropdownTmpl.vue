@@ -1,11 +1,11 @@
 <template>
 	<btn-group class="btn-dropdown">
 		<slot></slot>
-		<btn-tmpl :btnType="btnType" @click.native="isDrop=!isDrop">
-			{{btnText}}
+		<btn-tmpl :btnType="btnType" @click.native="isDrop=!isDrop" :btnState="isDrop ? 'btn-active':'' ">
+			{{text}}
 			<span class="btn-icon caret-down" :class="caretAlign !='none' ? 'stick-'+caretAlign :'' " ></span>
 		</btn-tmpl>
-		<component :is="dropdownListType" v-show="isDrop"></component>
+		<component :is="dropdownListType" v-show="isDrop" :listModel="listModel" :listAlign="listAlign">{{text}}</component>
 	</btn-group>	
 </template>
 <script >
@@ -24,7 +24,7 @@
 			'default':defaultBtnDropdownList
 		},
 		props:{
-			btnText:{
+			text:{
 				type:String,
 				default:''
 			},
@@ -33,7 +33,7 @@
 				default:'default'
 			},
 			btnType:{
-				type:String,
+				type:[String,Array],
 				default:'btn-primary'
 			},
 			caretAlign:{
@@ -42,16 +42,15 @@
 				validator(value){
 					return ['left','right','none'].includes(value);
 				}
+			},
+			listAlign:{
+				type:String,
+				default:'right'
+			},
+			listModel:{
+				type:Array,
+				default:()=>[]
 			}
 		}
 	};
 </script>
-
-<style lang="scss">
-	// $fa-font-path:"../../assets/fonts/font-awesome" ;
-	// @import "../style/font-awesome/font-awesome";
-	// @import "../style/common";
-	// @import "../style/button-icon";
-	// @import "../style/button-dropdown";
-	
-</style>

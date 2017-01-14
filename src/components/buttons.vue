@@ -194,8 +194,8 @@
 							<div class="row">
 								<div class="cols-6">默认</div>
 								<div class="cols-6">
-									<btn-dropdown >
-										<btn-tmpl btnType="btn-primary" >Primary</btn-tmpl>
+									<btn-dropdown :listModel="dropDownListModel">
+										<btn-tmpl btnType="btn-primary"  >Primary</btn-tmpl>
 									</btn-dropdown>
 								</div>
 							</div>
@@ -282,9 +282,17 @@
 	introTmpl.extractTitles(details,xtitle);
 	export default {
 		data(){
+			let dropDownListModel = [
+				'General web',
+				'Facebook',
+				'Instagram',
+				'Prospecting',
+				'Retargeting'
+			];
 			return {
 				isDrop:false,
-				details:details
+				details,
+				dropDownListModel
 			};
 		},
 		components:{

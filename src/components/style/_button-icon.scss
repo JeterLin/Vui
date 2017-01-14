@@ -28,6 +28,11 @@ $button-icon-compile-once:false !default;
 		content:$fa-var-caret-down;
 	}
 }
+.ellipsis-h{
+	&:before{
+		content:$fa-var-ellipsis-h;
+	}
+}
 .align-left{
 	&:before{
 		content:$fa-var-align-left;
