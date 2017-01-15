@@ -3,8 +3,7 @@
 		<slot></slot>
 		<btn-tmpl :btnType="getBtnType()" @click.native="isDrop=!isDrop" :btnIcon="getBtnIconName()">
 			<span :slot="getBtnSlotName()">
-				<span class="drop-btn-text">{{text}}</span>
-				<span class="btn-icon " :class="getDropIconClassNames()" ></span>
+				<span class="drop-btn-text">{{text}}</span><span class="btn-icon " :class="getDropIconClassNames()" ></span>
 			</span>
 		</btn-tmpl>
 		<component :is="dropdownListType" v-show="isDrop" :btnType="btnType" :listModel="listModel" :listAlign="listAlign">{{text}}</component>

@@ -48,13 +48,12 @@ $btn-dropdown-compile-once:false !default;
 .multi-dropdown{
 	@extend %btn-dropdown;
 	$icon-size:20px;
-	.plus,.check-square,.minus-square,.square-o{
-		font-size:$icon-size;
+	.square-o{
+		color:$color-label;
 	}
-	.btn-active{
-		.plus,.check-square,.minus-square{
-			color:$product-color-blue;
-		}
+	.plus,.check-square,.minus-square,.square-o{
+
+		font-size:$icon-size;
 	}
 	.drop-btn-text{
 		padding-left:$space-sm;

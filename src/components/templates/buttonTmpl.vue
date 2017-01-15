@@ -1,9 +1,9 @@
 <template>
-<button class="btn" :class="buttonClassNames" @click="onClickButton">
-	<slot></slot>
-	<span v-if="btnIcon !=='defaultVal' " class="btn-icon" :class="iconClassNames" @click="onClickIcon"></span>
-	<slot name="afterIcon"></slot>
-</button>
+	<button class="btn" :class="buttonClassNames" @click="onClickButton">
+		<slot></slot>
+		<span v-if="btnIcon !=='defaultVal' " class="btn-icon js-inner-icon" :class="iconClassNames" @click.stop="onClickIcon"></span>
+		<slot name="afterIcon"></slot>
+	</button>
 </template>
 
 <script >
@@ -53,7 +53,21 @@
 				default:'defaultVal'
 			}
 	};
-	// let methods = 
+	// cannot handle events on children elements of button in IE and FF,
+	// thus the elements will be moved out from button
+	let handleFFIEIconClick = function(){
+		let target = this.$el.querySelector('.js-inner-icon');
+		let replacementEle = document.createElement('span');
+		replacementEle.style.cssText=`display:inline-block;width:${target.clientWidth}px;height:${target.clientHeight}px`;
+		let originOffsetLeft = target.offsetLeft;
+		let originOffsetTop = target.offsetTop;
+		this.$el.removeChild(target);
+		this.$el.insertBefore(replacementEle,this.$el.firstElementChild);
+		let parent= this.$el.parentNode;
+
+		parent.insertBefore(target,parent.firstElementChild);
+		target.style.cssText = `position:absolute;left:${originOffsetLeft}px;top:${originOffsetTop}px;`;
+	};
 	export default {
 		data(){
 			return {
@@ -67,9 +81,16 @@
 			this.buttonClassNames = this.getClassName('button');
 			this.iconClassNames = this.getClassName('icon');
 		},
+		mounted(){
+			if(Array.isArray(this.btnType) && 
+				this.btnType.includes('btn-multi')){
+				handleFFIEIconClick.call(this);
+			}
+		},
 		props:props,
 		methods:{
-			onClickButton(){
+			onClickButton(e){
+				// console.info(e.originalEvent);
 				if(Array.isArray(this.btnType) &&
 					this.btnType.includes('btn-dropdown')){
 					this.isClickButton = !this.isClickButton;
@@ -82,6 +103,9 @@
 				}
 			},
 			onClickIcon(){
+				// console.info('shit',this.iconClassNames);
+				if(Array.isArray(this.btnType) && 
+					this.btnType.includes('btn-multi')){
 					this.isClickIcon = !this.isClickIcon;
 					let resultList = [];
 					if(this.isClickIcon){
@@ -103,6 +127,7 @@
 						});
 					}
 					this.iconClassNames = resultList ;
+				}
 			},
 			getClassName(componentType){
 				let resultList = [];
