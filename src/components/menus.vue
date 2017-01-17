@@ -65,8 +65,11 @@
 								</div>
 							</div>
 							<div class="row" :style="getZIndex()">
-								<div class="cols-2"></div>
-								<div class="cols-5"></div>
+								<div class="cols-4"></div>
+								<div class="cols-3">
+									<btn-dropdown :btn-type="['btn-secondary','btn-plus']" :listModel="plusListModel"
+									></btn-dropdown>
+								</div>
 								<div class="cols-5"></div>
 							</div>
 						</div>
@@ -145,12 +148,63 @@
 
 				]
 			};
+			let plusListModel=[
+				{
+					itemText:'Spend',
+					itemValue:'$13,490.50'
+				},
+				{
+					itemText:'Impressions',
+					itemValue:'2,144,123'
+				},
+				{
+					itemText:'CPM',
+					itemValue:'$6.29'
+				},
+				{
+					itemText:'Clicks',
+					itemValue:'3,369'
+				},
+				{
+					itemText:'CTR',
+					itemValue:'0.16%'
+				},
+				{
+					itemText:'CPC',
+					itemValue:'$4.02'
+				},
+				{
+					itemText:'Conversions',
+					itemValue:'4,425'
+				},
+				{
+					itemText:'CTC',
+					itemValue:'298'
+				},
+				{
+					itemText:'CTC Rate',
+					itemValue:'8.87&'
+				},
+				{
+					itemText:'VTC',
+					itemValue:'4,127'
+				},
+				{
+					itemText:'VTC Rate',
+					itemValue:'0.19%'
+				},
+				{
+					itemText:'CPA',
+					itemValue:'$3.05'
+				}
+			];
 			return {
 				details,
 				listModel,
 				dropDownListModel,
 				smallListModel,
-				msListModel
+				msListModel,
+				plusListModel
 			};
 		},
 		methods:{

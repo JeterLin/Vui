@@ -1,6 +1,8 @@
 $caret-size:8px !default;
 $btn-radius:2px !default;
 $btn-dropdown-compile-once:false !default;
+$icon-size:20px;
+$sm-icon-size:$font-size-base;
 @mixin make-btn-dropdown-style(){
 %btn-dropdown{
 	display:table;
@@ -35,6 +37,7 @@ $btn-dropdown-compile-once:false !default;
 }
 .btn-dropdown{
 	@extend %btn-dropdown;
+	
 }
 .circle-btn-dropdown{
 	@extend %btn-dropdown;
@@ -45,16 +48,15 @@ $btn-dropdown-compile-once:false !default;
 		padding:0;
 	}
 }
-$icon-size:20px;
+
 .multi-dropdown{
 	@extend %btn-dropdown;
 	
 	.square-o{
-		
+
 		color:$color-label;
 	}
 	.plus,.check-square,.minus-square,.square-o{
-
 		font-size:$icon-size;
 	}
 	.drop-btn-text{
@@ -63,6 +65,13 @@ $icon-size:20px;
 	}
 	.btn-secondary>span{
 		vertical-align: middle;
+	}
+}
+.plus-dropdown{
+	@extend %btn-dropdown;
+	.plus{
+		font-size:$sm-icon-size;
+		color:$product-color-blue;
 	}
 }
 // default dropdown list
@@ -83,6 +92,7 @@ $icon-size:20px;
 	@include make-droplist-layout($space-md,$space-base);
 	@extend %dropdown-list;
 	li{
+		cursor: pointer;
 		&:hover{
 			background-color:$bg-color-blue;
 		}
@@ -125,6 +135,46 @@ $icon-size:20px;
 	}
 	.btn-icon{
 		padding-right:$space-base;
+	}
+
+}
+.plus-dropdown-list{
+	position: absolute;
+	@extend %dropdown-list;
+	min-width:250px;
+	.btn-icon{
+		padding-right:$space-sm;
+	}
+	span{
+		vertical-align: middle;
+	}
+	li{
+		@include clearfix;
+	}
+	.check-item{
+		// display: inline-block;
+		min-width: 150px;
+		padding-left:$space-normal;
+		padding-right:$space-normal;
+		padding-top:$space-base;
+		padding-bottom:$space-base;
+		&:hover{
+			cursor: pointer;
+			background-color:$bg-color-blue;
+		}
+
+	}
+	.item-value{
+		padding-left:$space-normal;
+		padding-right:$space-normal;
+		border-left:solid 1px $color-line-rule;
+		background-color:$bg-color-green;
+	}
+	.square-o{
+		color:$color-label;
+	}
+	.plus,.check-square,.minus-square,.square-o{
+		font-size:$icon-size;
 	}
 
 }

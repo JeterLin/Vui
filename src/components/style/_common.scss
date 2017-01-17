@@ -116,7 +116,6 @@ $cols:                    12 !default;
 @mixin make-droplist-layout($hz-padding:$space-base,$v-padding:$space-sm){
 	position: absolute;
 	li{
-		cursor: pointer;
 		padding-top:$v-padding;
 		padding-bottom:$v-padding;
 		padding-left:$hz-padding;

@@ -1,6 +1,7 @@
 <template>
 	<button class="btn" :class="buttonClassNames" @click="onClickButton">
 		<slot></slot>
+		<!-- icon before button text -->
 		<span v-if="btnIcon !=='defaultVal' " class="btn-icon js-inner-icon" :class="iconClassNames" @click.stop="onClickIcon"></span>
 		<slot name="afterIcon"></slot>
 	</button>
@@ -15,6 +16,7 @@
 		'btn-large':'btn-large',
 		'btn-dropdown':'',
 		'btn-multi':'',
+		'btn-plus':'',
 		// values of btnIcon or btnIcon.iconName
 		'spinner':'spinner',
 		'cart':'cart',
@@ -83,8 +85,8 @@
 			};
 		},
 		created(){
-			this.buttonClassNames = this.getClassName('button');
-			this.iconClassNames = this.getClassName('icon');
+			this.buttonClassNames = this.initClassName('button');
+			this.iconClassNames = this.initClassName('icon');
 		},
 		mounted(){
 			if(Array.isArray(this.btnType) && 
@@ -96,7 +98,6 @@
 		watch:{
 			isCheckIcon(val){
 				let resultList = [];
-				debugger;
 				if(val){
 					this.isCheckIconByClick = true;
 					resultList = this.checkIcon();
@@ -162,7 +163,6 @@
 						resultList = this.uncheckIcon();
 					}
 					this.$emit('clickIcon');
-					debugger;
 					this.iconClassNames = resultList ;
 			},
 			onClickIcon(){
@@ -172,7 +172,7 @@
 					this.handleClickIcon();
 				}
 			},
-			getClassName(componentType){
+			initClassName(componentType){
 				let resultList = [];
 				switch(componentType){
 					case 'button':

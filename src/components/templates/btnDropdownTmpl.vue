@@ -1,9 +1,9 @@
 <template>
-	<btn-group :class="getDropdownClassNames()">
+	<btn-group :class="initDropdownClassNames()">
 		<slot></slot>
-		<btn-tmpl :btnType="getBtnType()"  :btnIcon="getBtnIconName()" :isCheckIcon="isAllItemsCheck" @click.native="isDrop=!isDrop" @clickIcon="onClickIcon" >
-			<span :slot="getBtnSlotName()">
-				<span class="drop-btn-text">{{text}}</span><span class="btn-icon " :class="getDropIconClassNames()" ></span>
+		<btn-tmpl :btnType="initBtnType()"  :btnIcon="initBtnIconName()" :isCheckIcon="isAllItemsCheck" @click.native="isDrop=!isDrop" @clickIcon="onClickIcon" >
+			<span :slot="initBtnSlotName()">
+				<span class="drop-btn-text" v-if="isTextExist()">{{text}}</span><span class="btn-icon " :class="initDropIconClassNames()" ></span>
 			</span>
 		</btn-tmpl>
 		<component :is="dropdownListType" v-show="isDrop" :isCheckAll="isCheckAll" :btnType="btnType" :listModel="listModel" :listAlign="listAlign" @clickItem="isAllItemsCheck=!isAllItemsCheck;">{{text}}</component>
@@ -12,8 +12,9 @@
 <script >
 	import buttonTmpl from './buttonTmpl.vue';
 	import btnGrpTmpl from './btnGrpTmpl.vue';
-	import defaultBtnDropdownList from "./defaultBtnDropdownList.vue";
-	import multiDropdownList from './multiDropdownList.vue'
+	import defaultBtnDropdownList from './defaultBtnDropdownList.vue';
+	import multiDropdownList from './multiDropdownList.vue';
+	import plusDropdownList from './plusDropdownList.vue';
 	export default {
 		data(){
 			return {
@@ -43,7 +44,15 @@
 				this.isCheckAll=!this.isCheckAll;
 				this.isAllItemsCheck=this.isCheckAll;
 			},
-			getBtnType(){
+			initDropdownListType(){
+				if(this.containsBtnType('btn-multi')){
+					this.dropdownListType = 'multi';
+				}
+				if(this.containsBtnType('btn-plus')){
+					this.dropdownListType = 'plus';
+				}
+			},
+			initBtnType(){
 				if(typeof this.btnType==='string'){
 					return ['btn-dropdown',this.btnType];
 				}else if(Array.isArray(this.btnType)){
@@ -54,65 +63,73 @@
 			log(text){
 				console.info(text);
 			},
-			getDropdownClassNames(){
-				if(Array.isArray(this.btnType) &&
-					this.btnType.includes('btn-circle')){
+			initDropdownClassNames(){
+				if(this.containsBtnType('btn-circle')){
 					return 'circle-btn-dropdown';
 				}
-				if(Array.isArray(this.btnType) &&
-					this.btnType.includes('btn-multi') ){
+				if(this.containsBtnType('btn-multi') ){
 					return 'multi-dropdown';
+				}
+				if(this.containsBtnType('btn-plus')){
+					return 'plus-dropdown';
 				}
 				return 'btn-dropdown';
 			},
-			getBtnIconName(){
-				if(['plus','minus','check'].includes(this.checkIcon)){
+			// button icon before button text
+			initBtnIconName(){
+				if(this.containsBtnType('btn-multi')){
 					return this.classMap[this.checkIcon];
 				}
 				return 'defaultVal';
 			},
-			getBtnSlotName(){
-				if(['plus','check','minus'].includes(this.checkIcon)){
+			initBtnSlotName(){
+				if(this.containsBtnType('btn-multi')){
 					return 'afterIcon';
 				}
 				return '';
 			},
-			getDropIconClassNames(){
+			// button icon after button text by default
+			initDropIconClassNames(){
 				let dropIconAlign= 'defaultVal';
+				let dropIcon = this.dropIcon;
 				if(this.dropIconAlign== 'left'){
 					dropIconAlign = 'drop-icon-left';
 				}else if(this.dropIconAlign == 'right'){
 					dropIconAlign = 'drop-icon-right';
 				}
+
+				if(this.containsBtnType('btn-plus')){
+					dropIcon = 'plus';
+				}
 				let resultList = [
-					this.classMap[this.dropIcon],
+					this.classMap[dropIcon],
 
 					this.classMap[dropIconAlign]
 				];
 				return resultList;
+			},
+			isTextExist(){
+				return typeof this.text === 'string' && this.text.length>0;
+			},
+			containsBtnType(type){
+				return Array.isArray(this.btnType) && this.btnType.includes(type);
 			}
 		},
 		components:{
 			'btnTmpl':buttonTmpl,
 			'btnGroup':btnGrpTmpl,
 			'default':defaultBtnDropdownList,
-			'multi':multiDropdownList
+			'multi':multiDropdownList,
+			'plus':plusDropdownList
 		},
 		created(){
-			if(Array.isArray(this.btnType) &&
-				this.btnType.includes('btn-multi')){
-				this.dropdownListType = 'multi';
-			}
+			this.initDropdownListType();
 		},
 		props:{
 			text:{
 				type:String,
 				default:''
 			},
-			// dropdownListType:{
-			// 	type:String,
-			// 	default:'default'
-			// },
 			btnType:{
 				type:[String,Array],
 				default:'btn-primary'

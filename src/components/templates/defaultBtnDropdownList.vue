@@ -1,5 +1,5 @@
 <template>
-<ul class="default-dropdown-list" :style="getListStyle()"  >
+<ul class="default-dropdown-list" :style="initListStyle()"  >
 	<li v-if="isSlotExist"><slot></slot></li>
 	<li v-for="item in listModel" :key="keyid(item)">{{item}}</li>
 </ul>	
@@ -21,21 +21,21 @@
 			keyid(item){
 				return keyid(item);
 			},
-			getListStyle(){
-				let resultObj = {};
+			initListStyle(){
+				let styleObj = {};
 				if(typeof this.btnType === 'string' || Array.isArray(this.btnType)){
 					if(this.btnType === 'btn-circle' || this.btnType.includes('btn-circle')){
-						resultObj['width']='auto';
+						styleObj['width']='auto';
 					}else {
-						resultObj['width']='180px';
+						styleObj['width']='180px';
 					}
 				}
 				if(this.listAlign === 'left'){
-					resultObj['left']=0;
+					styleObj['left']=0;
 				}else if(this.listAlign === 'right'){
-					resultObj['right']=0;
+					styleObj['right']=0;
 				}
-				return resultObj;
+				return styleObj;
 			}
 		},
 		props:{
