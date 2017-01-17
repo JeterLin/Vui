@@ -45,10 +45,12 @@ $btn-dropdown-compile-once:false !default;
 		padding:0;
 	}
 }
+$icon-size:20px;
 .multi-dropdown{
 	@extend %btn-dropdown;
-	$icon-size:20px;
+	
 	.square-o{
+		
 		color:$color-label;
 	}
 	.plus,.check-square,.minus-square,.square-o{
@@ -56,8 +58,8 @@ $btn-dropdown-compile-once:false !default;
 		font-size:$icon-size;
 	}
 	.drop-btn-text{
-		padding-left:$space-sm;
-		padding-right:$space-sm;
+		padding-left:$space-base;
+		padding-right:$space-base;
 	}
 	.btn-secondary>span{
 		vertical-align: middle;
@@ -65,10 +67,10 @@ $btn-dropdown-compile-once:false !default;
 }
 // default dropdown list
 %dropdown-list{
-	// ($font-size-base + $space-base * 2) calc for button height , first `2px` calc for button border width , second `2px` calc for extra space
-	$droplist-padding:($font-size-base + $space-base * 2) + 2px + 2px;
-	@include make-droplist-layout($space-md,$space-base);
+	$droplist-padding:2px;
+	// @include make-droplist-layout($space-md,$space-base);
 	z-index:1;
+	top:100%;
 	right: 0;
 	background-color:#fff;
 	margin-top:$droplist-padding;
@@ -76,10 +78,9 @@ $btn-dropdown-compile-once:false !default;
 	border-radius:$btn-radius;
 	
 	box-shadow:0 $space-sm / 2 $space-sm  $color-line-rule;
-
-	
 }
 .default-dropdown-list{
+	@include make-droplist-layout($space-md,$space-base);
 	@extend %dropdown-list;
 	li{
 		&:hover{
@@ -88,7 +89,44 @@ $btn-dropdown-compile-once:false !default;
 	}
 }
 .multi-dropdown-list{
+	@include make-droplist-layout($space-normal,$space-base);
 	@extend %dropdown-list;
+	$dropdown-list-width:460px;
+	width:$dropdown-list-width;
+	left:0;
+	li{
+		border-bottom:solid 1px $color-line-rule;
+		cursor: pointer;
+		&:hover{
+			background-color:$bg-color-blue;
+		}
+	}
+	header{
+		span{
+			vertical-align: middle;
+		}
+	}
+	div{
+		&:before{
+			content:$fa-var-check-square;
+			visibility: hidden;
+			font-size:$icon-size;
+			padding-right:$space-base;
+			float:left;
+			font-family: 'FontAwesome';
+		}
+	}
+	.item-body{
+		color:$color-label;
+		margin:0;
+		overflow: hidden;
+		// box-sizing: border-box;
+
+	}
+	.btn-icon{
+		padding-right:$space-base;
+	}
+
 }
 
 }

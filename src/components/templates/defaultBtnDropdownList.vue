@@ -5,6 +5,7 @@
 </ul>	
 </template>
 <script>
+	import {keyid} from "../keyid.vue";
 	export default {
 		data(){
 			return {
@@ -18,10 +19,7 @@
 		},
 		methods:{
 			keyid(item){
-				if(item && item.id){
-					return item.id;
-				}
-				return Math.random().toString().replace('.','');
+				return keyid(item);
 			},
 			getListStyle(){
 				let resultObj = {};

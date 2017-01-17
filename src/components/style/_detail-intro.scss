@@ -3,7 +3,7 @@ $detail-intro-compile-once:false !default;
 @mixin make-intro-style(){
 #intro{
 		p{
-			@include make-paragraph();
+		
 		}
 		
 		// display:inline-block;
@@ -23,6 +23,7 @@ $detail-intro-compile-once:false !default;
 			box-sizing:border-box;
 		}
 		.main-intro{
+				@include make-paragraph();
 		}
 		.detail{
 			// @include clearfix; 

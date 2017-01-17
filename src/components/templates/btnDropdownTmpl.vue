@@ -1,21 +1,25 @@
 <template>
 	<btn-group :class="getDropdownClassNames()">
 		<slot></slot>
-		<btn-tmpl :btnType="getBtnType()" @click.native="isDrop=!isDrop" :btnIcon="getBtnIconName()">
+		<btn-tmpl :btnType="getBtnType()"  :btnIcon="getBtnIconName()" :isCheckIcon="isAllItemsCheck" @click.native="isDrop=!isDrop" @clickIcon="onClickIcon" >
 			<span :slot="getBtnSlotName()">
 				<span class="drop-btn-text">{{text}}</span><span class="btn-icon " :class="getDropIconClassNames()" ></span>
 			</span>
 		</btn-tmpl>
-		<component :is="dropdownListType" v-show="isDrop" :btnType="btnType" :listModel="listModel" :listAlign="listAlign">{{text}}</component>
+		<component :is="dropdownListType" v-show="isDrop" :isCheckAll="isCheckAll" :btnType="btnType" :listModel="listModel" :listAlign="listAlign" @clickItem="isAllItemsCheck=!isAllItemsCheck;">{{text}}</component>
 	</btn-group>	
 </template>
 <script >
 	import buttonTmpl from './buttonTmpl.vue';
 	import btnGrpTmpl from './btnGrpTmpl.vue';
 	import defaultBtnDropdownList from "./defaultBtnDropdownList.vue";
+	import multiDropdownList from './multiDropdownList.vue'
 	export default {
 		data(){
 			return {
+				dropdownListType:'default',
+				isAllItemsCheck:false,
+				isCheckAll:false,
 				isDrop:false,
 				classMap:{
 					// the key part below is values of dropIcon
@@ -35,6 +39,10 @@
 			};
 		},
 		methods:{
+			onClickIcon(){
+				this.isCheckAll=!this.isCheckAll;
+				this.isAllItemsCheck=this.isCheckAll;
+			},
 			getBtnType(){
 				if(typeof this.btnType==='string'){
 					return ['btn-dropdown',this.btnType];
@@ -87,17 +95,24 @@
 		components:{
 			'btnTmpl':buttonTmpl,
 			'btnGroup':btnGrpTmpl,
-			'default':defaultBtnDropdownList
+			'default':defaultBtnDropdownList,
+			'multi':multiDropdownList
+		},
+		created(){
+			if(Array.isArray(this.btnType) &&
+				this.btnType.includes('btn-multi')){
+				this.dropdownListType = 'multi';
+			}
 		},
 		props:{
 			text:{
 				type:String,
 				default:''
 			},
-			dropdownListType:{
-				type:String,
-				default:'default'
-			},
+			// dropdownListType:{
+			// 	type:String,
+			// 	default:'default'
+			// },
 			btnType:{
 				type:[String,Array],
 				default:'btn-primary'

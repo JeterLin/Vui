@@ -12,17 +12,14 @@
 
 </template>
 <script >
+	import {keyid} from "../keyid.vue";
 	export default {
 		
 		data(){
 			let id = 0;
 			return {
 				keyid(item){
-					if(item.id != null ){
-						return item.id;
-					}
-					id++;
-					return (id + Math.random()).toString().replace('.','');
+					return keyid(item);
 				}
 			};
 		},

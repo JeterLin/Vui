@@ -51,6 +51,10 @@
 			btnState:{
 				type:String,
 				default:'defaultVal'
+			},
+			isCheckIcon:{
+				type:Boolean,
+				default:false
 			}
 	};
 	// cannot handle events on children elements of button in IE and FF,
@@ -71,8 +75,9 @@
 	export default {
 		data(){
 			return {
-				isClickButton:false,
-				isClickIcon:false,
+
+				isActiveButton:false,
+				isCheckIconByClick:false,
 				buttonClassNames:[],
 				iconClassNames:[]
 			};
@@ -88,13 +93,28 @@
 			}
 		},
 		props:props,
+		watch:{
+			isCheckIcon(val){
+				let resultList = [];
+				debugger;
+				if(val){
+					this.isCheckIconByClick = true;
+					resultList = this.checkIcon();
+
+				}else {
+					this.isCheckIconByClick = false;
+					resultList = this.uncheckIcon();
+				}
+				this.iconClassNames = resultList;
+			}
+		},
 		methods:{
 			onClickButton(e){
 				// console.info(e.originalEvent);
 				if(Array.isArray(this.btnType) &&
 					this.btnType.includes('btn-dropdown')){
-					this.isClickButton = !this.isClickButton;
-					if(this.isClickButton){
+					this.isActiveButton = !this.isActiveButton;
+					if(this.isActiveButton){
 						this.buttonClassNames.push(classMap['btn-active']);
 					}else {
 						this.buttonClassNames.pop();
@@ -102,31 +122,54 @@
 					this.buttonClassNames = this.buttonClassNames;
 				}
 			},
+			checkIcon(){
+				if( this.iconClassNames.includes(classMap['icon-active'])){
+					return this.iconClassNames;
+				}
+				let resultList = [];
+
+				resultList = this.iconClassNames.map((className)=>{
+					if(className === classMap['square']){
+						return classMap[this.btnIcon];
+					}
+					return className;
+				});
+				resultList.push(classMap['icon-active']);	
+				
+				return resultList;
+			},
+			uncheckIcon(){
+				if(!this.iconClassNames.includes(classMap['icon-active'])){
+					return this.iconClassNames;
+				}
+				let resultList = [];
+				this.iconClassNames.pop();		
+			    resultList = this.iconClassNames.map((className)=>{
+					if(className === classMap[this.btnIcon]){
+						return classMap['square'];
+					}
+					return className;
+				});				
+				return resultList;
+			},
+			handleClickIcon(){
+				this.isCheckIconByClick = !this.isCheckIconByClick;
+					let resultList = [];
+					if(this.isCheckIconByClick){
+					   resultList = this.checkIcon();
+					   
+					}else {
+						resultList = this.uncheckIcon();
+					}
+					this.$emit('clickIcon');
+					debugger;
+					this.iconClassNames = resultList ;
+			},
 			onClickIcon(){
 				// console.info('shit',this.iconClassNames);
 				if(Array.isArray(this.btnType) && 
 					this.btnType.includes('btn-multi')){
-					this.isClickIcon = !this.isClickIcon;
-					let resultList = [];
-					if(this.isClickIcon){
-					   resultList = this.iconClassNames.map((className)=>{
-							// return 
-							if(className === classMap['square']){
-								return classMap[this.btnIcon];
-							}
-							return className;
-						});
-					   resultList.push(classMap['icon-active']);
-					}else {
-						this.iconClassNames.pop();
-					    resultList = this.iconClassNames.map((className)=>{
-							if(className === classMap[this.btnIcon]){
-								return classMap['square'];
-							}
-							return className;
-						});
-					}
-					this.iconClassNames = resultList ;
+					this.handleClickIcon();
 				}
 			},
 			getClassName(componentType){
