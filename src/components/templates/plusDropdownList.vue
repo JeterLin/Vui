@@ -7,13 +7,6 @@
 			</td>
 			<td class="item-value">{{item.itemValue}}</td>
 		</tr>
-		<!-- <tr>
-			<td  class="check-item">
-				<span class="btn-icon check-square icon-active"></span>
-				Impressions
-			</td>
-			<td class="item-value">2,144,123</td>
-		</tr> -->
 	</table>
 </template>
 <script >

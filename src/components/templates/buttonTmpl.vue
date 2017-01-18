@@ -98,15 +98,19 @@
 		watch:{
 			isCheckIcon(val){
 				let resultList = [];
-				if(val){
-					this.isCheckIconByClick = true;
-					resultList = this.checkIcon();
+				// if(val)
+				// {
+				// 	this.isCheckIconByClick = true;
+				// 	resultList = this.checkIcon();
 
-				}else {
+				// }else
+				if(val)
+				{
 					this.isCheckIconByClick = false;
 					resultList = this.uncheckIcon();
+					this.iconClassNames = resultList;
 				}
-				this.iconClassNames = resultList;
+				
 			}
 		},
 		methods:{

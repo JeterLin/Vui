@@ -89,7 +89,7 @@ $sm-icon-size:$font-size-base;
 	box-shadow:0 $space-sm / 2 $space-sm  $color-line-rule;
 }
 .default-dropdown-list{
-	@include make-droplist-layout($space-md,$space-base);
+	@include make-droplist-layout($space-normal,$space-base);
 	@extend %dropdown-list;
 	li{
 		cursor: pointer;

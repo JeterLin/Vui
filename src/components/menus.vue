@@ -61,16 +61,18 @@
 									<btn-dropdown :btnType="['btn-secondary','btn-multi']" :listModel="msListModel.data" checkIcon="check" :text="msListModel.buttonText" ></btn-dropdown>
 								</div>
 								<div class="cols-5">
-									<btn-dropdown :btn-type="['btn-secondary','btn-multi']" :listModel="msListModel.data" checkIcon="minus" :text="msListModel.buttonText" ></btn-dropdown>
+									<btn-dropdown :btnType="['btn-secondary','btn-multi']" :listModel="msListModel.data" checkIcon="minus" :text="msListModel.buttonText" ></btn-dropdown>
 								</div>
 							</div>
 							<div class="row" :style="getZIndex()">
 								<div class="cols-4"></div>
 								<div class="cols-3">
-									<btn-dropdown :btn-type="['btn-secondary','btn-plus']" :listModel="plusListModel"
+									<btn-dropdown :btnType="['btn-secondary','btn-plus']" :listModel="plusListModel"
 									></btn-dropdown>
 								</div>
-								<div class="cols-5"></div>
+								<div class="cols-5">
+									<btn-dropdown btnType="btn-secondary" text="Spend" :listModel="dropDownListModel" listAlign="left" dropIconAlign="right"></btn-dropdown>
+								</div>
 							</div>
 						</div>
 					</section>
@@ -130,23 +132,25 @@
 				buttonText:"All Placements",
 				data:[
 					{
-						checked:false,
 						itemHead:'mobile news feed',
 						itemBody:'Ads will show up for people who are using the facebook app on mobile devices like Androids ,iPhones and tablets'
 					},
 					{
-						checked:false,
 						itemHead:'Instagram',
 						itemBody:'Ads will appear Instagram app on an iOS and Android devices'
 					},
 					{
-						checked:false,
 						itemHead:'Audience Network',
 						itemBody:'Ads will show up on mobile apps websites that have been approved by Facebook to show ads'
 					}
 
 
-				]
+				],
+				copy(){
+					return this.data.map((item)=>{
+						return Object.assign({},item);
+					});
+				}
 			};
 			let plusListModel=[
 				{

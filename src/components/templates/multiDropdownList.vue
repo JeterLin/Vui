@@ -40,15 +40,15 @@
 				}else {
 					this.activeItemLen--;
 				}
-				if(this.activeItemLen === this.dataList.length){
-					// todo
-					this.$emit('clickItem');
-				}
+				// if(this.activeItemLen === this.dataList.length){
+				// 	// todo
+				// 	this.$emit('clickItem');
+				// }
 				if(!isActive && 
 				    this.dataList.length > 1 && 
 				    this.activeItemLen === this.dataList.length - 1){
 					// todo
-					this.$emit('clickItem');
+					this.$emit('cancelItem');
 				}
 			},
 			checkOrUncheck(item){
@@ -95,12 +95,12 @@
 		},
 		created(){
 			this.dataList = this.listModel.map((dataItem)=>{
-				return Object.assign(dataItem,{
+				return Object.assign({
 					id:keyid(),
 					classNames:['square-o'],
 					isActive:false,
 					isDisable:false
-				});
+				},dataItem);
 			});
 		},
 		watch:{
@@ -108,10 +108,11 @@
 				if(val){
 					this.checkAll();
 					this.activeItemLen = this.dataList.length;
-				}else{
-					this.unCheckAll();
-					this.activeItemLen = 0;
 				}
+				// else{
+				// 	this.unCheckAll();
+				// 	this.activeItemLen = 0;
+				// }
 			}
 		},
 		props:{

@@ -1,12 +1,12 @@
 <template>
 	<btn-group :class="initDropdownClassNames()">
 		<slot></slot>
-		<btn-tmpl :btnType="initBtnType()"  :btnIcon="initBtnIconName()" :isCheckIcon="isAllItemsCheck" @click.native="isDrop=!isDrop" @clickIcon="onClickIcon" >
+		<btn-tmpl :btnType="initBtnType()"  :btnIcon="initBtnIconName()" :isCheckIcon="isCancelItem" @click.native="isDrop=!isDrop" @clickIcon="onClickIcon" >
 			<span :slot="initBtnSlotName()">
 				<span class="drop-btn-text" v-if="isTextExist()">{{text}}</span><span class="btn-icon " :class="initDropIconClassNames()" ></span>
 			</span>
 		</btn-tmpl>
-		<component :is="dropdownListType" v-show="isDrop" :isCheckAll="isCheckAll" :btnType="btnType" :listModel="listModel" :listAlign="listAlign" @clickItem="isAllItemsCheck=!isAllItemsCheck;">{{text}}</component>
+		<component :is="dropdownListType" v-show="isDrop" :isCheckAll="isCheckAll" :btnType="btnType" :listModel="listModel" :listAlign="listAlign" @cancelItem="onCancelListItem">{{text}}</component>
 	</btn-group>	
 </template>
 <script >
@@ -15,11 +15,12 @@
 	import defaultBtnDropdownList from './defaultBtnDropdownList.vue';
 	import multiDropdownList from './multiDropdownList.vue';
 	import plusDropdownList from './plusDropdownList.vue';
+
 	export default {
 		data(){
 			return {
 				dropdownListType:'default',
-				isAllItemsCheck:false,
+				isCancelItem:false,
 				isCheckAll:false,
 				isDrop:false,
 				classMap:{
@@ -41,8 +42,19 @@
 		},
 		methods:{
 			onClickIcon(){
+				debugger;
 				this.isCheckAll=!this.isCheckAll;
-				this.isAllItemsCheck=this.isCheckAll;
+				// this.isCancelItem=this.isCheckAll;
+				if(this.isCheckAll){
+					this.isCancelItem = false;
+				}
+			},
+			onCancelListItem(){
+				this.isCancelItem=!this.isCancelItem;
+				// this.isCheckAll = this.isCancelItem;
+				if(this.isCancelItem){
+					this.isCheckAll = false;
+				}
 			},
 			initDropdownListType(){
 				if(this.containsBtnType('btn-multi')){
