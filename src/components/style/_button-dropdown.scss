@@ -37,6 +37,10 @@ $sm-icon-size:$font-size-base;
 }
 .btn-dropdown{
 	@extend %btn-dropdown;
+	.circle{
+		transform: scale(0.65);
+		color:$product-color-blue;
+	}
 	
 }
 .circle-btn-dropdown{

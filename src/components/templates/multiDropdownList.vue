@@ -109,10 +109,6 @@
 					this.checkAll();
 					this.activeItemLen = this.dataList.length;
 				}
-				// else{
-				// 	this.unCheckAll();
-				// 	this.activeItemLen = 0;
-				// }
 			}
 		},
 		props:{
@@ -124,10 +120,6 @@
 			listAlign:{
 				type:String,
 				default:'right'
-			},
-			btnType:{
-				type:[String,Array],
-				default:'btn-primary'
 			}
 		}
 	}

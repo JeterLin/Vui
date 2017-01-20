@@ -6,7 +6,7 @@
 				<span class="drop-btn-text" v-if="isTextExist()">{{text}}</span><span class="btn-icon " :class="initDropIconClassNames()" ></span>
 			</span>
 		</btn-tmpl>
-		<component :is="dropdownListType" v-show="isDrop" :isCheckAll="isCheckAll" :btnType="btnType" :listModel="listModel" :listAlign="listAlign" @cancelItem="onCancelListItem">{{text}}</component>
+		<component :is="dropdownListType" v-show="isDrop" :isCheckAll="isCheckAll"  :listModel="listModel" :listAlign="listAlign" @cancelItem="onCancelListItem" :listWidth="initListWidth()" ></component>
 	</btn-group>	
 </template>
 <script >
@@ -32,6 +32,8 @@
 					'check':'check',
 					'minus':'minus',
 					'square':'square',
+					// values of btnIcon
+					'circle':'circle',
 					// the key part below is values of dropIconAlign
 					'drop-icon-left':'stick-left',
 					'drop-icon-right':'stick-right',
@@ -75,6 +77,13 @@
 			log(text){
 				console.info(text);
 			},
+			initListWidth(){
+				if(!this.containsBtnType('btn-circle') &&
+				   !this.containsBtnType('btn-plus')){
+					return '180px';
+				}
+				return 'auto';
+			},
 			initDropdownClassNames(){
 				if(this.containsBtnType('btn-circle')){
 					return 'circle-btn-dropdown';
@@ -89,13 +98,17 @@
 			},
 			// button icon before button text
 			initBtnIconName(){
+				if(this.btnIcon!=='defaultVal'){
+					return this.classMap[this.btnIcon];
+				}
 				if(this.containsBtnType('btn-multi')){
 					return this.classMap[this.checkIcon];
 				}
 				return 'defaultVal';
 			},
 			initBtnSlotName(){
-				if(this.containsBtnType('btn-multi')){
+				if(this.containsBtnType('btn-multi') ||
+					this.btnIcon!=='defaultVal'){
 					return 'afterIcon';
 				}
 				return '';
@@ -145,6 +158,10 @@
 			btnType:{
 				type:[String,Array],
 				default:'btn-primary'
+			},
+			btnIcon:{
+				type:String,
+				default:'defaultVal'
 			},
 			checkIcon:{
 				type:String,

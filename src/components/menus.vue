@@ -71,7 +71,13 @@
 									></btn-dropdown>
 								</div>
 								<div class="cols-5">
-									<btn-dropdown btnType="btn-secondary" text="Spend" :listModel="dropDownListModel" listAlign="left" dropIconAlign="right"></btn-dropdown>
+									<btn-dropdown btnType="btn-secondary" btnIcon="circle" text="Spend" :listModel="dropDownListModel" listAlign="left" dropIconAlign="right"></btn-dropdown>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cols-2">联动下拉菜单</div>
+								<div class="cols-10">
+									<btn-dropdown btnType="btn-secondary" text="Province" dropIconAlign="right" :listModel="['GuangDong','FuJian','GuangXi']" listAlign="left"></btn-dropdown>
 								</div>
 							</div>
 						</div>
@@ -234,8 +240,4 @@
 
 	};
 </script>
-<style lang="scss">
-	// @import "./style/common";
-	// @import "./style/button";
 
-</style>

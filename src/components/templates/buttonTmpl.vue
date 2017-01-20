@@ -29,6 +29,7 @@
 		'minus':'minus-square',
 		'check':'check-square',
 		'square':'square-o',
+		'circle':'circle',
 		// values of btnIcon.aniType
 		'spin':'spin',
 		// values of iconState
@@ -98,12 +99,6 @@
 		watch:{
 			isCheckIcon(val){
 				let resultList = [];
-				// if(val)
-				// {
-				// 	this.isCheckIconByClick = true;
-				// 	resultList = this.checkIcon();
-
-				// }else
 				if(val)
 				{
 					this.isCheckIconByClick = false;

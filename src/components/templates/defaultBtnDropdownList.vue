@@ -1,6 +1,5 @@
 <template>
 <ul class="default-dropdown-list" :style="initListStyle()"  >
-	<li v-if="isSlotExist"><slot></slot></li>
 	<li v-for="item in listModel" :key="keyid(item)">{{item}}</li>
 </ul>	
 </template>
@@ -8,14 +7,9 @@
 	import {keyid} from "../keyid.vue";
 	export default {
 		data(){
-			return {
-				isSlotExist:false
-			};
+			return {};
 		},
 		mounted(){
-			if(this.$slots.default[0].text != ""){
-				this.isSlotExist = true;
-			}
 		},
 		methods:{
 			keyid(item){
@@ -23,13 +17,14 @@
 			},
 			initListStyle(){
 				let styleObj = {};
-				if(typeof this.btnType === 'string' || Array.isArray(this.btnType)){
-					if(this.btnType === 'btn-circle' || this.btnType.includes('btn-circle')){
-						styleObj['width']='auto';
-					}else {
-						styleObj['width']='180px';
-					}
-				}
+				// if(typeof this.btnType === 'string' || Array.isArray(this.btnType)){
+				// 	if(this.btnType === 'btn-circle' || this.btnType.includes('btn-circle')){
+				// 		styleObj['width']='auto';
+				// 	}else {
+				// 		styleObj['width']='180px';
+				// 	}
+				// }
+				styleObj['width']=this.listWidth;
 				if(this.listAlign === 'left'){
 					styleObj['left']=0;
 				}else if(this.listAlign === 'right'){
@@ -47,9 +42,9 @@
 				type:String,
 				default:'right'
 			},
-			btnType:{
-				type:[String,Array],
-				default:'btn-primary'
+			listWidth:{
+				type:String,
+				default:'auto'
 			}
 		}
 	};

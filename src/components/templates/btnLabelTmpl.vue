@@ -28,12 +28,6 @@
 			caretAlign:{
 				default:'none',
 				validator(value){
-					// if(value === 'none' || 
-					//    value === 'left' || 
-					//    value === 'right'){
-					// 	return true;
-					// }
-					// return false;
 					return ['none','left','right'].includes(value);
 				}
 			}

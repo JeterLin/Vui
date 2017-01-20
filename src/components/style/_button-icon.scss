@@ -45,6 +45,11 @@ $button-icon-compile-once:false !default;
 		content:$fa-var-plus;
 	}
 }
+.circle{
+	&:before{
+		content:$fa-var-circle;
+	}
+}
 .check-square{
 	&:before{
 		content: $fa-var-check-square;
