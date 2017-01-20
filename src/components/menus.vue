@@ -77,7 +77,7 @@
 							<div class="row">
 								<div class="cols-2">联动下拉菜单</div>
 								<div class="cols-10">
-									<btn-dropdown btnType="btn-secondary" text="Province" dropIconAlign="right" :listModel="['GuangDong','FuJian','GuangXi']" listAlign="left"></btn-dropdown>
+									<btn-dropdown btnType="btn-secondary" text="省份" dropIconAlign="right" :listModel="['广东','福建','广西壮族自治区']" listAlign="left"></btn-dropdown>
 								</div>
 							</div>
 						</div>

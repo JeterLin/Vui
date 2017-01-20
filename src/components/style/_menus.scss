@@ -33,6 +33,7 @@
 
 		}
 		.item-name{
+			white-space:pre;
 			background-color:$bg-color-blue;
 			&:hover{
 				color:$product-color-blue;
@@ -76,6 +77,7 @@
 		border-top:solid 1px $color-line-rule;
 		border-bottom:solid 1px $color-line-rule;
 		.item-name{
+
 			padding:{
 				top:$space-base;
 				bottom:$space-base;
