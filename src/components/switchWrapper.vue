@@ -2,7 +2,8 @@
 	<component :is="currentView.viewName" ></component>
 </template>
 <script>
-	import eventBus from './eventBus.vue';
+	// import eventBus from './eventBus.vue';
+	import eventBus from "./utils/eventBus";
 	let currentView = {viewName:'intro'};
 	let createdWithHash = {};
 	eventBus.on('click.intro',function(){

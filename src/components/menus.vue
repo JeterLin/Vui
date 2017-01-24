@@ -77,7 +77,7 @@
 							<div class="row">
 								<div class="cols-2">联动下拉列表</div>
 								<div class="cols-10">
-									<select-group></select-group>
+									<select-group :text="'hello container!'"></select-group>
 								</div>
 							</div>
 						</div>
@@ -103,7 +103,8 @@
 	import xtitle from "./directives/xtitle.vue";
 	import menuTmpl from "./templates/menuTmpl.vue";
 	import btnDropdownTmpl from "./templates/btnDropdownTmpl.vue";
-	import selectGroupTmpl from "./templates/selectGroupTmpl.vue";
+	// import selectGroupTmpl from "./templates/selectGroupTmpl.vue";
+	import selectGroupContainer from "./containers/selectGroupContainer.js";
 	// default details constructor to collect and save titles in this page
 	let details = new introTmpl.Details("菜单");
 	// default extract titles method
@@ -162,7 +163,7 @@
 			'rightNav':rightNav,
 			'menuTmpl':menuTmpl,
 			'btnDropdown':btnDropdownTmpl,
-			'selectGroup':selectGroupTmpl
+			'selectGroup':selectGroupContainer
 		},
 		directives:{
 			'xtitle':xtitle

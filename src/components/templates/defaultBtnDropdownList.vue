@@ -4,7 +4,7 @@
 </ul>	
 </template>
 <script>
-	import {keyid} from "../keyid.vue";
+	import keyid from "../utils/keyid.js";
 	export default {
 		data(){
 			return {};
@@ -17,13 +17,6 @@
 			},
 			initListStyle(){
 				let styleObj = {};
-				// if(typeof this.btnType === 'string' || Array.isArray(this.btnType)){
-				// 	if(this.btnType === 'btn-circle' || this.btnType.includes('btn-circle')){
-				// 		styleObj['width']='auto';
-				// 	}else {
-				// 		styleObj['width']='180px';
-				// 	}
-				// }
 				styleObj['width']=this.listWidth;
 				if(this.listAlign === 'left'){
 					styleObj['left']=0;

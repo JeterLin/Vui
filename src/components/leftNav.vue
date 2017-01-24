@@ -11,7 +11,8 @@
 	</nav>	
 </template>
 <script >
-	import eventBus from "./eventBus.vue";
+	// import eventBus from "./eventBus.vue";
+	import eventBus from "./utils/eventBus";
 	export default {
 		data(){
 			let itemList=[

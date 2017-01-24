@@ -12,7 +12,7 @@
 	</ul>
 </template>
 <script>
-	import {keyid} from "../keyid.vue";
+	import keyid from "../utils/keyid.js";
 	export default {
 		data(){
 			return {
