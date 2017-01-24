@@ -75,9 +75,9 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="cols-2">联动下拉菜单</div>
+								<div class="cols-2">联动下拉列表</div>
 								<div class="cols-10">
-									<btn-dropdown btnType="btn-secondary" text="省份" dropIconAlign="right" :listModel="['广东','福建','广西壮族自治区']" listAlign="left"></btn-dropdown>
+									<select-group></select-group>
 								</div>
 							</div>
 						</div>
@@ -98,12 +98,12 @@
 </template>
 <script >
 
-	import introTmpl from './templates/introTmpl.vue';
-	import rightNav from './rightNav.vue';
-	import xtitle from './directives/xtitle.vue';
-	import menuTmpl from './templates/menuTmpl.vue';
+	import introTmpl from "./templates/introTmpl.vue";
+	import rightNav from "./rightNav.vue";
+	import xtitle from "./directives/xtitle.vue";
+	import menuTmpl from "./templates/menuTmpl.vue";
 	import btnDropdownTmpl from "./templates/btnDropdownTmpl.vue";
-
+	import selectGroupTmpl from "./templates/selectGroupTmpl.vue";
 	// default details constructor to collect and save titles in this page
 	let details = new introTmpl.Details("菜单");
 	// default extract titles method
@@ -134,80 +134,9 @@
 				'duplicate'
 			];
 			// multi select list data model 
-			let msListModel={
-				buttonText:"All Placements",
-				data:[
-					{
-						itemHead:'mobile news feed',
-						itemBody:'Ads will show up for people who are using the facebook app on mobile devices like Androids ,iPhones and tablets'
-					},
-					{
-						itemHead:'Instagram',
-						itemBody:'Ads will appear Instagram app on an iOS and Android devices'
-					},
-					{
-						itemHead:'Audience Network',
-						itemBody:'Ads will show up on mobile apps websites that have been approved by Facebook to show ads'
-					}
+			let msListModel={buttonText:"All Placements", data:[{itemHead:'mobile news feed', itemBody:'Ads will show up for people who are using the facebook app on mobile devices like Androids ,iPhones and tablets'}, {itemHead:'Instagram', itemBody:'Ads will appear Instagram app on an iOS and Android devices'}, {itemHead:'Audience Network', itemBody:'Ads will show up on mobile apps websites that have been approved by Facebook to show ads'} ] }; 
+			let plusListModel=[{itemText:'Spend', itemValue:'$13,490.50'}, {itemText:'Impressions', itemValue:'2,144,123'}, {itemText:'CPM', itemValue:'$6.29'}, {itemText:'Clicks', itemValue:'3,369'}, {itemText:'CTR', itemValue:'0.16%'}, {itemText:'CPC', itemValue:'$4.02'}, {itemText:'Conversions', itemValue:'4,425'}, {itemText:'CTC', itemValue:'298'}, {itemText:'CTC Rate', itemValue:'8.87&'}, {itemText:'VTC', itemValue:'4,127'}, {itemText:'VTC Rate', itemValue:'0.19%'}, {itemText:'CPA', itemValue:'$3.05'} ]; 
 
-
-				],
-				copy(){
-					return this.data.map((item)=>{
-						return Object.assign({},item);
-					});
-				}
-			};
-			let plusListModel=[
-				{
-					itemText:'Spend',
-					itemValue:'$13,490.50'
-				},
-				{
-					itemText:'Impressions',
-					itemValue:'2,144,123'
-				},
-				{
-					itemText:'CPM',
-					itemValue:'$6.29'
-				},
-				{
-					itemText:'Clicks',
-					itemValue:'3,369'
-				},
-				{
-					itemText:'CTR',
-					itemValue:'0.16%'
-				},
-				{
-					itemText:'CPC',
-					itemValue:'$4.02'
-				},
-				{
-					itemText:'Conversions',
-					itemValue:'4,425'
-				},
-				{
-					itemText:'CTC',
-					itemValue:'298'
-				},
-				{
-					itemText:'CTC Rate',
-					itemValue:'8.87&'
-				},
-				{
-					itemText:'VTC',
-					itemValue:'4,127'
-				},
-				{
-					itemText:'VTC Rate',
-					itemValue:'0.19%'
-				},
-				{
-					itemText:'CPA',
-					itemValue:'$3.05'
-				}
-			];
 			return {
 				details,
 				listModel,
@@ -232,7 +161,8 @@
 			'introTmpl':introTmpl,
 			'rightNav':rightNav,
 			'menuTmpl':menuTmpl,
-			'btnDropdown':btnDropdownTmpl
+			'btnDropdown':btnDropdownTmpl,
+			'selectGroup':selectGroupTmpl
 		},
 		directives:{
 			'xtitle':xtitle

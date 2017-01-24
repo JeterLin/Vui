@@ -181,8 +181,28 @@ $sm-icon-size:$font-size-base;
 		font-size:$icon-size;
 	}
 
-}
-
+	}
+	select{
+		font-family:$font-family-sans-serif;
+		font-size:$font-size-base;
+		border-radius:$btn-radius;
+		padding:$space-sm;
+		color:$color-font;
+		// border-color:$color-label;
+		border:solid 1px $color-label;
+		outline-color: $product-color-blue;
+		background-color:#fff;
+		&[disabled]{
+			border-color:$color-line-rule;
+			color:$color-line-rule;	
+		}
+	}
+	select.left-padding{
+		margin-left:$space-base;
+		&:first-of-type{
+			margin-left:0;
+		}
+	}
 }
 @if $btn-dropdown-compile-once == false {
 	@include make-btn-dropdown-style;

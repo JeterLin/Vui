@@ -1,5 +1,5 @@
 <template>
-	<table class="plus-dropdown-list" :style="{borderCollapse:'collapse'}">
+	<table class="plus-dropdown-list">
 		<tr v-for="item in dataList" :key="item.id">
 			<td class="check-item" @click="onClickCheckItem(item)">
 				<span class="btn-icon " :class="item.iconClassNames"></span>
