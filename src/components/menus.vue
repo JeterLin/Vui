@@ -104,7 +104,7 @@
 	import menuTmpl from "./templates/menuTmpl.vue";
 	import btnDropdownTmpl from "./templates/btnDropdownTmpl.vue";
 	// import selectGroupTmpl from "./templates/selectGroupTmpl.vue";
-	import selectGroupContainer from "./containers/selectGroupContainer.js";
+	import selectGroupContainer from "./containers/selectGroupContainer.vue";
 	// default details constructor to collect and save titles in this page
 	let details = new introTmpl.Details("菜单");
 	// default extract titles method
@@ -163,7 +163,7 @@
 			'rightNav':rightNav,
 			'menuTmpl':menuTmpl,
 			'btnDropdown':btnDropdownTmpl,
-			'selectGroup':selectGroupContainer
+			'selectGroup':selectGroupContainer 
 		},
 		directives:{
 			'xtitle':xtitle

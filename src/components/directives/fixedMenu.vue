@@ -58,7 +58,14 @@
 			let originTop  = (getComputedStyle(el)['top'] == '' ? el.style.top : getComputedStyle(el)['top'].replace('px',''));
 			originPos = (originPos === '') ? 'static' : originPos;
 			originLeft = originLeft.indexOf('%')!=-1 ? el.offsetLeft : originLeft;
-
+			// fixed bugs in IE11
+			if(originLeft === 'auto'){
+				originLeft = 0;
+			}
+			// fixed bugs in IE11
+			if(originTop === 'auto'){
+				originTop = 0;
+			}
 			let actualLeft = getElementLeft(el);
 			let actualTop = getElementTop(el);
 			originTop = originTop.indexOf('%')!=-1 ? el.offsetTop : originTop;
@@ -77,6 +84,7 @@
 					}
 				}else {
 					if(isSetFlag){
+						console.info(originLeft);
 						el.style.position = originPos;
 						el.style.top = originTop + "px";
 						el.style.left = originLeft + "px";
