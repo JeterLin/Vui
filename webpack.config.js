@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-
+var mockApiHandler = require('./mocks/mock.js');
 module.exports = {
   entry: ['babel-polyfill','./src/main.js'],
   output: {
@@ -52,7 +52,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    setup:mockApiHandler
   },
   devtool: '#eval-source-map'
 }

@@ -84,7 +84,7 @@
 					}
 				}else {
 					if(isSetFlag){
-						console.info(originLeft);
+						// console.info(originLeft);
 						el.style.position = originPos;
 						el.style.top = originTop + "px";
 						el.style.left = originLeft + "px";

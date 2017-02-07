@@ -9,15 +9,15 @@
 	const calcHeight = function(listModel){
 		let maxheight = 0;
 		for(let x of listModel){
-			let calcheight = 0;
-			if(typeof x ==='object'){
+			let layerheight = 0;
+			if(x && typeof x ==='object'){
 				if(Array.isArray(x.subList)){
-					calcheight = calcheight + calcHeight(x.subList) + 1;
+					layerheight = layerheight + calcHeight(x.subList) + 1;
 				}else {
-					calcheight = 1;
+					layerheight = 1;
 				}
-				if(maxheight < calcheight){
-					maxheight = calcheight;
+				if(maxheight < layerheight){
+					maxheight = layerheight;
 				}
 			}
 		}
@@ -53,7 +53,7 @@
 							x.selected = true;
 							if(Array.isArray(x.subList) && i+1 < this.dataListLen){
 								this.dataList[i+1]=Object.assign(this.dataList[i+1],{
-									selectList:[{value:'default',text:'请选择'},...x.subList],
+									selectList:[{value:'default',text:'请选择'}].concat(x.subList),
 									disabled:false
 								});
 							}

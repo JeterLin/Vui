@@ -1,4 +1,4 @@
-<template>
+	<template>
 	<select-group :listModel="listModel"></select-group>
 </template>
 <script >
