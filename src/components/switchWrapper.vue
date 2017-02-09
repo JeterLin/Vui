@@ -49,9 +49,11 @@
 
 			'notButtons':function(resolve,reject){
 				require(['./notButtons.vue'],resolve);
+
 			},
 			'menus':function(resolve,reject){
 				require(['./menus.vue'],resolve);
+
 			}
 		},
 	};

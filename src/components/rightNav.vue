@@ -30,7 +30,7 @@
 		},
 		methods:{
 			closePreMenu(item){
-
+				
 				if(this && !this.item){
 					this.item = item;
 				}else if(this && this.item != item) {

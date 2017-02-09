@@ -5,8 +5,10 @@ module.exports = {
   entry: ['babel-polyfill','./src/main.js'],
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist',
-    filename: 'build.js'
+    publicPath: '/dist/',
+    filename: 'build.js',
+    chunkFilename:'[name].bundle.js',
+    hotUpdateChunkFilename:'[name].bundle.js'
   },
   module: {
     rules: [
@@ -59,6 +61,7 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
+  module.exports.output.publicPath = '';
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
