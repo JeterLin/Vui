@@ -9,7 +9,7 @@
 				<section>
 					<h1 class="title" v-xtitle:rank="0">类型</h1>
 					<section>
-						<h2 class="sub-title" v-xtitle:rank="1">基础菜单</h2>
+						<h2 class="sub-title" :id="keyid()" v-xtitle:rank="1">基础菜单</h2>
 						<div class="container">
 							<div class="row">
 								<div class="cols-2" >
@@ -40,7 +40,7 @@
 
 					</section>
 					<section>
-						<h2 class="sub-title" v-xtitle:rank="1">下拉菜单</h2>
+						<h2 class="sub-title" v-xtitle:rank="1" :id="keyid()">下拉菜单</h2>
 						<div class="container">
 							<div class="row" :style="getZIndex()">
 								<div class="cols-2">默认</div>
@@ -83,7 +83,7 @@
 						</div>
 					</section>
 					<section>
-						<h2 class="sub-title" v-xtitle:rank="1">折叠菜单</h2>
+						<h2 class="sub-title" v-xtitle:rank="1" :id="keyid()">折叠菜单</h2>
 						<div class="container">
 							<div class="row"></div>
 						</div>
@@ -105,6 +105,7 @@
 	import btnDropdownTmpl from "./templates/btnDropdownTmpl.vue";
 	// import selectGroupTmpl from "./templates/selectGroupTmpl.vue";
 	import selectGroupContainer from "./containers/selectGroupContainer.vue";
+	import keyid from './utils/keyid';
 	// default details constructor to collect and save titles in this page
 	let details = new introTmpl.Details("菜单");
 	// default extract titles method
@@ -148,6 +149,9 @@
 			};
 		},
 		methods:{
+			keyid(){
+				return `subtitle_id_${keyid()}`;
+			},
 			getZIndex:function(){
 				let zidx =1e3;
 				return ()=>{

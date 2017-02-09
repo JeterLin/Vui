@@ -11,7 +11,7 @@
 		&:hover{
 			background-color: transparentize($product-color-blue,0.2);
 			.sub-menu-list{
-				display: table;
+				display: block;
 			}
 		}
 		>.item-name{

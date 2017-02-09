@@ -9,6 +9,8 @@
 	</section>
 </template>
 <script >
+	//construct data structure for rightNav 
+	
 	class Details {
 		constructor(componentName){
 			this.componentName = componentName ;
@@ -26,16 +28,16 @@
 			
 			let item = q.shift();
 			let subtitles = [];
-
-			
 			for(let child of item.subtitles){
 				subtitles.push({
 					title:child.title
+					,subtitleLink:`#${child.el.id}`
 				});
 			}
 			if(subtitles.length == 0){
 				subtitles.push({
 					title:item.title
+					,subtitleLink:`#${item.el.id}`
 				});
 			}
 			details.detailList.push({

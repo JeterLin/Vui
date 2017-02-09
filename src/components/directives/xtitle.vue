@@ -2,8 +2,9 @@
 	let titlesMap = new Array();
 	
 	const TitleItem = class {
-		constructor(rank,title='',subtitles=[]){
+		constructor(rank,el,title='',subtitles=[]){
 			this.rank = rank;
+			this.el = el;
 			this.title = title;
 			this.subtitles = subtitles;
 		}
@@ -72,7 +73,7 @@
 			let headingText = el.innerHTML;
 			if(binding.arg === 'rank' && typeof binding.value == 'number'){
 				let rank = binding.value;
-				let titleItem = new TitleItem(rank,headingText);
+				let titleItem = new TitleItem(rank,el,headingText);
 				if( preRank >= rank ){
 					while(!stack.isEmpty()){
 						let topList = stack.peek();

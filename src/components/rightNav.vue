@@ -8,7 +8,7 @@
 				<a href="javascript:;">{{item.title}}</a>
 				<ul class="detail-sublist " >
 					<li v-for="subitem in item.subtitles" :class="{active:subitem.isActive}">
-						<a href="#">{{subitem.title}}</a>
+						<a :href="subitem.subtitleLink">{{subitem.title}}</a>
 					</li>
 				</ul>
 			</li>
