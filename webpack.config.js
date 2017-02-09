@@ -61,6 +61,8 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
+  // reset `publicPath` to `''`,otherwise the web server cannot resovle async dynamic components
+  //  in compnent `<switchWrapper>` after building 
   module.exports.output.publicPath = '';
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
